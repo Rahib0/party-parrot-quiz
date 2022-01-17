@@ -4,36 +4,36 @@ import { Categories, QuestionCount } from '..'
 
 
 export default function FormCreateGame() {
-    const [ input, setInput ] = useState({ name: "", questions: 0, topic: "", difficulty: "" })
+    const [ input, setInput ] = useState({ name: "", questions: 1, topic: 0, difficulty: "easy" })
 
 
     
-    const updateInput = e => {
-        const fieldInput = e.target.value
-        const key = e.target.name
-        setInput({ ...input, key: fieldInput })
-    }
+    // const updateInput = e => {
+    //     const fieldInput = e.target.value
+    //     const key = e.target.name
+    //     setInput({ ...input, key: fieldInput })
+    // }
 
-    const handleSubmit = e => {
-        e.preventDefault()
-        // getResult(location);
-    }
+    // const handleSubmit = e => {
+    //     e.preventDefault()
+    //     // getResult(location);
+    // }
 
     return (
         <div>
+            {console.log(input)}
             <form>
                 <div>
                     <input type='text' placeholder='enter name' />
-
                 </div>
                 
                 <div>
                     <label>Number of questions</label>
-                    <QuestionCount />
+                    <QuestionCount input={input} />
                 </div>
 
                 <div>
-                    <Categories setInput={setInput} />
+                    <Categories input={input} setInput={setInput} />
                 </div>
 
                 <div>
