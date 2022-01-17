@@ -4,14 +4,21 @@ import { Categories, QuestionCount } from '..'
 
 
 export default function FormCreateGame() {
-    const [ input, setInput ] = useState({ name: "", questions: 1, topic: 0, difficulty: "easy" })
+    const [ input, setInput ] = useState({ name: "", questions: 10, topic: 0, difficulty: "easy" })
 
+
+    function handleSubmit (e) {
+        e.preventDefault()
+        if (!input.name) {
+            alert("Please enter a name")
+        } 
+    }
 
 
     return (
         <div>
             {console.log("input is: ", input)}
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <input type='text' onChange={(e) => {setInput({ ...input, name: e.target.value })}} placeholder='enter name' />
                 </div>
@@ -34,7 +41,8 @@ export default function FormCreateGame() {
                 </div>
 
                 <div>
-                    <button>Create Game</button>
+                    <input type="submit" value='Create Game'/>
+                    
                 </div>
             </form>
         </div>

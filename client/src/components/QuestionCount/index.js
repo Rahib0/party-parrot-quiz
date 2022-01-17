@@ -11,7 +11,6 @@ export default function QuestionCount({ input, setInput }) {
         if(input.topic > 0){
             axios.get(`https://opentdb.com/api_count.php?category=${input.topic}`)
             .then(res => {
-                console.log(res.data)
                 let hold
                 switch (input.difficulty) {
                     case "easy":
@@ -29,11 +28,7 @@ export default function QuestionCount({ input, setInput }) {
                     default:
                         hold = 50
             }
-            console.log('here')
-            console.log(hold)
-            console.log(maxCount)
             if (hold > 50) {
-                console.log("I am being run") 
                 setMaxCount(50)
             } else {
                 setMaxCount(hold)
@@ -46,7 +41,6 @@ export default function QuestionCount({ input, setInput }) {
     }, [input.topic, input.difficulty])
 
     useEffect(() => {
-        console.log(count)
         setInput({ ...input, questions: count })
     }, [count])
 
@@ -55,9 +49,11 @@ export default function QuestionCount({ input, setInput }) {
     }, [ maxCount ])
 
     function handleOnChange (e) {
-        console.log(e.target.value)
-        setCount(e.target.value)
-        console.log(count)
+        if (e.target.value < 0) {
+            setCount(1)
+        } else {
+            setCount(e.target.value)
+        }
         setInput({ ...input, questions: count })
     }
 
@@ -66,9 +62,8 @@ export default function QuestionCount({ input, setInput }) {
 
     return (
         <div>
-            {console.log("current question count: ", count)}
             <label>No. of Questions:</label>
-            <input type='number' id='amount' value={count} onChange={handleOnChange}  min='1' max={maxCount}/>
+            <input type='number' id='amount' value={count} onChange={handleOnChange}  min='1' max={maxCount} />
             <p>The maximum number of questions is: {maxCount}</p>
 
         </div>
