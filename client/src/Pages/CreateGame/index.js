@@ -7,7 +7,6 @@ export default function CreateGame() {
             <Back />
             <div>This is create game page</div>
             <FormCreateGame />
-            <QuestionCount />
         </>
         
     )
