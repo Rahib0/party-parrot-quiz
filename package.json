@@ -15,8 +15,5 @@
   "bugs": {
     "url": "https://github.com/Rahib0/party-parrot-quiz/issues"
   },
-  "homepage": "https://github.com/Rahib0/party-parrot-quiz#readme",
-  "dependencies": {
-    "socketio": "^1.0.0"
-  }
+  "homepage": "https://github.com/Rahib0/party-parrot-quiz#readme"
 }
