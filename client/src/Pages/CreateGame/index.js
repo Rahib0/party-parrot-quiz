@@ -1,9 +1,14 @@
 import React from 'react'
+import { Back, FormCreateGame, QuestionCount } from '../../components'
 
-export default function index() {
+export default function CreateGame() {
     return (
-        <div>
-            
-        </div>
+        <>
+            <Back />
+            <div>This is create game page</div>
+            <FormCreateGame />
+            <QuestionCount />
+        </>
+        
     )
 }
