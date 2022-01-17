@@ -14,6 +14,7 @@ class Questions {
       }))
       this.scores = data.scores
     }  
+    
 }
 class Game{
     constructor(data){
