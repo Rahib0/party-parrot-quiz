@@ -1,5 +1,5 @@
 import React from 'react'
-import { Back, FormCreateGame, QuestionCount } from '../../components'
+import { Back, FormCreateGame } from '../../components'
 
 export default function CreateGame() {
     return (
@@ -7,7 +7,6 @@ export default function CreateGame() {
             <Back />
             <div>This is create game page</div>
             <FormCreateGame />
-            <QuestionCount />
         </>
         
     )

@@ -4,32 +4,27 @@ import { Categories, QuestionCount } from '..'
 
 
 export default function FormCreateGame() {
-    const [ input, setInput ] = useState({ name: "", questions: 1, topic: 0, difficulty: "easy" })
+    const [ input, setInput ] = useState({ name: "", questions: 10, topic: 0, difficulty: "easy" })
 
 
-    
-    // const updateInput = e => {
-    //     const fieldInput = e.target.value
-    //     const key = e.target.name
-    //     setInput({ ...input, key: fieldInput })
-    // }
+    function handleSubmit (e) {
+        e.preventDefault()
+        if (!input.name) {
+            alert("Please enter a name")
+        } 
+    }
 
-    // const handleSubmit = e => {
-    //     e.preventDefault()
-    //     // getResult(location);
-    // }
 
     return (
         <div>
-            {console.log(input)}
-            <form>
+            {console.log("input is: ", input)}
+            <form onSubmit={handleSubmit}>
                 <div>
-                    <input type='text' placeholder='enter name' />
+                    <input type='text' onChange={(e) => {setInput({ ...input, name: e.target.value })}} placeholder='enter name' />
                 </div>
                 
                 <div>
-                    <label>Number of questions</label>
-                    <QuestionCount input={input} />
+                    <QuestionCount input={input} setInput={setInput}/>
                 </div>
 
                 <div>
@@ -38,7 +33,7 @@ export default function FormCreateGame() {
 
                 <div>
                     <label>Difficulty</label>
-                    <select name='difficulty'>
+                    <select name='difficulty' onChange={(e) => {setInput({ ...input, difficulty: e.target.value })}}>
                         <option value="easy">Easy</option>
                         <option value="medium">Medium</option>
                         <option value="hard">Hard</option>
@@ -46,13 +41,9 @@ export default function FormCreateGame() {
                 </div>
 
                 <div>
-                    <button>Create Game</button>
+                    <input type="submit" value='Create Game'/>
+                    
                 </div>
-
-                
-
-
-
             </form>
         </div>
     )
