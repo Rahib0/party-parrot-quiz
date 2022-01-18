@@ -23,7 +23,7 @@ services:
     container_name: dev_db
     volumes:
       - "dev_db:/var/lib/mongodb/data"
-      - "./api/db/seed.js:/docker-entrypoint-initdb.d/seed.js:ro"
+      - "./server/db/seed.js:/docker-entrypoint-initdb.d/seed.js:ro"
     environment: 
       - MONGO_INITDB_ROOT_USERNAME=user
       - MONGO_INITDB_DATABASE=dev_db
