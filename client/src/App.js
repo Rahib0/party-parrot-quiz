@@ -12,7 +12,7 @@ function App() {
                     <Route path='/create' element={<CreateGame />} />
                     <Route path='/join' element={<JoinGame />} />
                     <Route path='/leaderboards' element={<Leaderboards />} />
-                    <Route path='/game/:lobbyid?' element={<Game />} />
+                    {/* <Route path='/game/:lobbyid?' element={<Game />} /> */}
                     <Route path='*' element={<ErrorPage />} />
                     
                 </Routes>
