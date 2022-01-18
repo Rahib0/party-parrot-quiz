@@ -14,12 +14,15 @@ class Questions {
       }))
       this.scores = data.scores
     }  
+    
 }
-class Game{
-    constructor(data){
-    this.id = data.id
-    this.name = data.name
-    this.answers= data.questions.results}
+class Game {
+    constructor(data) {
+      this.id = data.id
+      this.name = data.name
+      this.answers= data.questions.results
+    }
+      
     static get all() {
       return new Promise(async (resolve, reject) => {
         try {
@@ -31,9 +34,9 @@ class Game{
           reject(`Error retrieving game: ${err.message}`);
         }
       });
-  }
+      }
   
-  static findById(id) {
+    static findById(id) {
       return new Promise(async (resolve, reject) => {
         try {
           const db = await init();
@@ -44,7 +47,7 @@ class Game{
           reject(`Error retrieving game: ${err.message}`);
         }
       });
-  }
+    }
   
   //Query to retrieve questions from API
   static create(query) {
@@ -67,6 +70,25 @@ class Game{
           reject(`Error creating game: ${err.message}`);
         }
       });
+  }
+
+  //Get function to add scores to leaderboard
+  static get totalScores() {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const db = await init();
+        const collection = await db.collection("leaderboard");
+        const data = (await collection.find({}).toArray()).map((r) => ({
+          name: r.name,
+          category: result.category,
+          difficulty: result.difficulty,
+          score: r.score,
+        }));
+        resolve(data);
+      } catch (err) {
+        reject(`Error retrieving scores: ${err.message}`);
+      }
+    });
   }
 }
 
