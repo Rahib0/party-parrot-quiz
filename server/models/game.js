@@ -72,6 +72,38 @@ class Game {
       });
   }
 
+  //Function to calaulate scores for each player
+  static addAnswers(id, player, data) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const answers = data.answers
+        const name = data.name
+        const db = await init();
+        const gameToUpdate = await db
+          .collection("games")
+          .findOne({ _id: ObjectId(id) });
+        const quiz = gameToUpdate.questions.quiz;
+        const difficulty = quiz[0].difficulty;
+        const type = quiz[0].type;
+        const res = quiz.map((r, i) => ({
+          correct_answer: r.correct_answer,
+		      player_answer: answers[i],
+		      player_correct: answers[i] === r.correct_answer,
+        }));
+        const count = res.filter((r) => r.player_correct === true).length;
+        const score = await db.collection("scores").insertOne({
+          name,
+          count,
+          difficulty,
+          type
+        });
+        resolve(score)
+      } catch (err) {
+        reject(`Could not add answers: ${err.message}`);
+      }
+    });
+  }
+
   //Get function to add scores to leaderboard
   static get totalScores() {
     return new Promise(async (resolve, reject) => {

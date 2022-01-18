@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import {useRanger} from 'react-ranger';
-import styled, { createGlobalStyle } from 'styled-components';
+//import {useRanger} from 'react-ranger';
+//import styled, { createGlobalStyle } from 'styled-components';
 
 
 
