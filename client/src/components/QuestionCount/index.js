@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { SliderCount } from '..';
+import {useRanger} from 'react-ranger';
+import styled, { createGlobalStyle } from 'styled-components';
+
 
 
 export default function QuestionCount({ input, setInput }) {
@@ -45,32 +47,40 @@ export default function QuestionCount({ input, setInput }) {
         setInput({ ...input, questions: count })
     }, [count])
 
+
     useEffect(() => {
         if ( count > maxCount ) { setCount(maxCount) }
     }, [ maxCount ])
 
     function handleOnChange (e) {
-        if (e.target.value < 0) {
-            setCount(1)
+        // if (e.target.value < 0) {
+        //     setCount(1)
+        // } else {
+        //     setCount(e.target.value)
+        // }
+        console.log(e.target.value)
+        if(e.target.value > maxCount){
+            alert('There is not enough questions in this category. Please reduce the number of questions or select a different category!')
         } else {
-            setCount(e.target.value)
-        }
-        setInput({ ...input, questions: count })
+        setInput({ ...input, questions: count })}
     }
+
+
+
 
 
 
 
     return (
         <div>
+
+
+
             <label>No. of Questions:</label>
             <input type='number' id='amount' value={count} onChange={handleOnChange}  min='1' max={maxCount} />
-            <p>The maximum number of questions is: {maxCount}</p>
+            
             <br></br>
-            <br></br>
-            <SliderCount />
-            <br></br>
-            <br></br>
+            <p>The maximum number of questions is: {maxCount}</p> 
         </div>
     )
 }
