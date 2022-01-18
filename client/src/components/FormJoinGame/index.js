@@ -1,9 +1,8 @@
 import React from 'react'
 
-export default function JoinGame() {
+export default function FormJoinGame() {
     return (
         <div>
-            This is Join game page
             
         </div>
     )

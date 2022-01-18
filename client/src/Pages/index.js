@@ -1,5 +1,5 @@
 export { default as Homepage } from './Homepage'
 export { default as CreateGame } from './CreateGame'
 export { default as JoinGame } from './JoinGame'
-export { default as Leaderboard } from './Leaderboard'
+export { default as Leaderboards } from './Leaderboards'
 export { default as ErrorPage } from './Error'

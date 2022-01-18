@@ -12,6 +12,9 @@ export default function FormCreateGame() {
         if (!input.name) {
             alert("Please enter a name")
         } 
+        else{
+
+        }
     }
 
 
@@ -32,7 +35,7 @@ export default function FormCreateGame() {
                 </div>
 
                 <div>
-                    <label>Difficulty</label>
+                    <label for="difficulty">Difficulty</label>
                     <select name='difficulty' onChange={(e) => {setInput({ ...input, difficulty: e.target.value })}}>
                         <option value="easy">Easy</option>
                         <option value="medium">Medium</option>
