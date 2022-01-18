@@ -1,6 +1,6 @@
 export { default as Back } from './goBack'
 export { default as Categories } from './Categories'
 export { default as FormCreateGame } from './FormCreateGame'
+export { default as FormJoinGame } from './FormJoinGame'
 export { default as QuestionCount } from './QuestionCount'
-export { default as SliderCount } from './SliderCount'
 export { default as LeaderBoard } from './LeaderBoard'

@@ -35,7 +35,7 @@ export default function FormCreateGame() {
                 </div>
 
                 <div>
-                    <label for="difficulty">Difficulty</label>
+                    <label htmlFor="difficulty">Difficulty</label>
                     <select name='difficulty' onChange={(e) => {setInput({ ...input, difficulty: e.target.value })}}>
                         <option value="easy">Easy</option>
                         <option value="medium">Medium</option>
