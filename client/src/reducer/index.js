@@ -1,4 +1,4 @@
-const initState = { game: { lobbyId: "", myScore: 0, myAnswers: [], players: [], currentQuestionNumber: 1 }, name: "Guest"}
+const initState = {  lobbyId: "", myScore: 0, myAnswers: [], players: [], currentQuestionNumber: 1, name: "Guest"}
 
 const gameReducer = (state = initState, action) => {
     switch (action.type){
@@ -7,19 +7,26 @@ const gameReducer = (state = initState, action) => {
                 ...state, 
                 socket: action.payload
             })
-        
-        case 'CREATE_LOBBY':
+        case "CHANGE_NAME":
             return ({
-                ...state.game,
-                lobbyId: action.payload.lobbyId,
-                players: [{ name: action.payload.name }],
-                name: action.payload.name
+                ...state,
+                name: action.payload
             })
         
-        case 'ADD_PLAYER':
+        case 'CREATE_LOBBY':
+            console.log(action.payload)
+            console.log(action.payload.lobbyId)
+            console.log(action.payload.name)
+            return ({
+                ...state,
+                name: action.payload.name,
+                lobbyId: action.payload.lobbyId
+            })
+        
+        case 'UPDATE_PLAYER_LIST':
             return ({
                     ...state, 
-                    players: action.payload.map(player => ({player: player, ready:false}))
+                    players: action.payload.map(player => ({player: player.name, id: player.socketId, ready:false}))
             })
         
         case 'LOAD_QUESTIONS':

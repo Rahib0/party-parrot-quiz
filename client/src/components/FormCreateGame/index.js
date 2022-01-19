@@ -3,13 +3,16 @@ import { Categories, QuestionCount } from '..'
 import { v4 as uuidv4 } from 'uuid'
 import { io } from 'socket.io-client'
 import { useSelector, useDispatch } from 'react-redux'
-import { addSocket, createLobby } from '../../actions'
+import { createLobby } from '../../actions'
 
 
 export default function FormCreateGame() {
     const [ input, setInput ] = useState({ name: "", questions: 10, topic: 0, difficulty: "easy" })
     const socket = useSelector(state => state.socket)
+    const state = useSelector(state => state)
     const dispatch = useDispatch()
+
+    // const state = useSelector(state => console.log(state))
 
     function handleSubmit (e) {
         e.preventDefault()
@@ -19,7 +22,8 @@ export default function FormCreateGame() {
             let lobbyId = uuidv4()
             console.log(lobbyId)
             s.emit('create-room', lobbyId, input, () => {
-                dispatch(createLobby({ lobbyId, name: input.name }))
+                dispatch(createLobby({ lobbyId: lobbyId, name: input.name }))
+                console.log(state)
                 window.location.assign(`http://localhost:3000/game/${lobbyId}`)
             }) 
             
@@ -38,11 +42,15 @@ export default function FormCreateGame() {
     }
 
     useEffect(() => {
-        if (!socket) {return}
-        console.log(socket)
+        console.log(state)
+    }, [state])
+
+    // useEffect(() => {
+    //     if (!socket) {return}
+    //     console.log(socket)
         
 
-    }, [socket])
+    // }, [socket])
 
 
 

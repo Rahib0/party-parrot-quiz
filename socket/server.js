@@ -8,31 +8,67 @@ let gamesArray = []
 
 function addPlayer(lobbyId, name, socketId) {
     const game = gamesArray.find(game => game.lobbyId == lobbyId)
-    
-    const index = gamesArray.indexOf(game)
-    console.log(game)
-    game.players.push({ name, socketId })
-    // gamesArray.fill( { ...game, players: [ ...game.players, { name, socketId } ] } )
+    game.players.push({ name, socketId, ready: false })
     console.log("new array: ", gamesArray)
 }
 
+function changePlayerName(lobbyId, name, socketId) {
+    const game = gamesArray.find(game => game.lobbyId == lobbyId)
+    let player = game.players.find(player => player.socketId == socketId)
+    const index = game.players.findIndex(player => player.socketId == socketId)
+    player = { ...player, name: name }
+    game.players[index] = player 
+    console.log("player info: ", player)
+    console.log("game info: ", game)
+}
+
+function playerArray(lobbyId) {
+    const game = gamesArray.find(game => game.lobbyId == lobbyId)
+    console.log(game.players)
+    return game.players
+}
+
+function togglePlayerReady(lobbyId, socketId, ready=true) {
+    const game = gamesArray.find(game => game.lobbyId == lobbyId)
+    let player = game.players.find(player => player.socketId == socketId)
+    const index = game.players.findIndex(player => player.socketId == socketId)
+    player = { ...player, ready: ready }
+    game.players[index] = player 
+    console.log("player info: ", player)
+    console.log("game info: ", game)
+}
+
 io.on('connection', socket => {
-    console.log(socket.id)
     socket.on('create-room', (lobbyId, input, cb) => {
         socket.join(lobbyId)
         gamesArray.push({ lobbyId, players: [ ], totalQuestions: input.questions, category: input.topic, difficulty: input.difficulty })
         cb()
-        console.log(gamesArray)
     })
 
     socket.on('join-lobby', (lobbyId, name) => {
         console.log(`lobby id is [${lobbyId}], name is ${name}`)
         socket.join(lobbyId)
         addPlayer(lobbyId, name, socket.id)
-        console.log(gamesArray[0].players)
+        io.in(lobbyId).emit('update-player-lobby', playerArray(lobbyId))
     })
 
+    socket.on('change-name', (lobbyId, name) => {
+        console.log(lobbyId, name)
+        changePlayerName(lobbyId, name, socket.id)
+        io.in(lobbyId).emit('update-player-lobby', playerArray(lobbyId))
+    })
 
+    socket.on('ready-up', (lobbyId, cb) => {
+        togglePlayerReady(lobbyId, socket.id)
+        io.in(lobbyId).emit('update-player-lobby', playerArray(lobbyId))
+        cb()
+    })
+
+    socket.on('ready-down', (lobbyId, cb) => {
+        togglePlayerReady(lobbyId, socket.id, false)
+        io.in(lobbyId).emit('update-player-lobby', playerArray(lobbyId))
+        cb()
+    })
 
 })
 

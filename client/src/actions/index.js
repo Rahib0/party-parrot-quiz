@@ -6,12 +6,17 @@ export const addSocket = (payload) => ({
 })
 
 export const createLobby = (payload) => ({
-    type: "CREATE_LOBBY",
-    payload
-})
+     type: "CREATE_LOBBY", 
+     payload 
+    })
 
-export const addPlayer = (payload) => ({
-    type: "ADD_PLAYER",
+export const changeName = (payload) => ({
+    type: "CHANGE_NAME", 
+    payload 
+    })
+
+export const updatePlayer = (payload) => ({
+    type: "UPDATE_PLAYER_LIST",
     payload
 })
 

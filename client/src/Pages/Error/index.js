@@ -11,12 +11,12 @@ export default function ErrorPage() {
         console.log(socket)
     })
     // useEffect(() => {
-    //     const s = io('http://localhost:3001')
-    //     console.log(s)
+        // const s = io('http://localhost:3001')
+        // console.log(s)
 
-    //     s.on('connect', () => {
-    //         setSocket( s )
-    //     })
+        // s.on('connect', () => {
+        //     setSocket( s )
+        // })
     //     // s.on('connect', () => {
     //     //     console.log(`You connected with id: ${s.id}`)
     //     //     // send custom event to server say-hello, msg parameter
