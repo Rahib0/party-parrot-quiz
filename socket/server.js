@@ -13,8 +13,16 @@ function addPlayer(lobbyId, name, socketId) {
     console.log(game.players)
 }
 
-function removePlayer(socketId) {
+function removePlayer( lobbyId, socketId) {
     if (!gamesArray) {return}
+    const game = gamesArray.find(game => game.lobbyId == lobbyId)
+    let players = game.players.filter(player => player.socketId != socketId)
+    game.players = players
+    console.log(gamesArray)
+
+    // console.log("player info: ", player)
+    // console.log("game info: ", game)
+
     // console.log("id is:", socketId)
     // const newGamesArr = gamesArray.filter(game => {
     //     const newPlayersArray = game.players.filter(player => {
@@ -25,7 +33,7 @@ function removePlayer(socketId) {
     // })
     // gamesArray = [ ...newGamesArr ]
     // console.log(newGamesArr)
-    console.log(gamesArray)
+    // console.log(gamesArray)
     // let newArr = []
     // gamesArray.forEach(game => {
     //     if (!game) {return}
@@ -72,6 +80,12 @@ function togglePlayerReady(lobbyId, socketId, ready=true) {
     // console.log("game info: ", game)
 }
 
+function checkIfEveryoneReady(lobbyId) {
+
+}
+
+
+
 io.on('connection', socket => {
     socket.on('create-room', (lobbyId, input, cb) => {
         socket.join(lobbyId)
@@ -88,11 +102,15 @@ io.on('connection', socket => {
 
     socket.on('disconnecting', () => {
         console.log("disconnected:", socket.id)
-        console.log(socket.rooms)
+        lobbyId = [...socket.rooms][1]
+        removePlayer( lobbyId, socket.id )
+        io.in(lobbyId).emit('update-player-lobby', playerArray(lobbyId))
         // removePlayer( socket.id )
         // io.in(lobbyId).emit('update-player-lobby', playerArray(lobbyId))
         
     })
+
+
 
 
 
