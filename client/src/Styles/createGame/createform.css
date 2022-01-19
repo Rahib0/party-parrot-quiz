@@ -33,9 +33,51 @@
   padding-bottom: 1%;
 }
 
+@media (max-width: 800px) {
+  .name ::-webkit-input-placeholder {
+    font-size: 150%;
+  }
+  .name :-ms-input-placeholder {
+    font-size: 150%;
+  }
+  .name ::-ms-input-placeholder {
+    font-size: 150%;
+  }
+  .name ::placeholder {
+    font-size: 150%;
+  }
+  .name input {
+    width: 40%;
+  }
+}
+
+@media (max-width: 620px) {
+  .name input {
+    width: 50%;
+  }
+}
+
+@media (max-width: 400px) {
+  .name input {
+    width: 60%;
+  }
+}
+
 .diff-label {
   margin-right: 1%;
   font-size: 200%;
+}
+
+@media (max-width: 500px) {
+  .diff-label {
+    font-size: 175%;
+  }
+}
+
+@media (max-width: 400px) {
+  .diff-label {
+    font-size: 150%;
+  }
 }
 
 .diff-select {
@@ -45,6 +87,18 @@
   padding-bottom: 0.5%;
   font-family: monospace;
   font-size: 150%;
+}
+
+@media (max-width: 500px) {
+  .diff-select {
+    font-size: 125%;
+  }
+}
+
+@media (max-width: 400px) {
+  .diff-select {
+    font-size: 100%;
+  }
 }
 
 .create-btn {

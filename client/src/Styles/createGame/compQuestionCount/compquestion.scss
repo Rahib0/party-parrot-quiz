@@ -1,21 +1,45 @@
 .q-input{
     font-family: monospace;
-    width: 5%;
+    width: 10%;
     text-align: center;
     padding-top: 0.5%;
     padding-bottom: 0.5%;
     font-size: 200%;
     border-radius: 10px;
+
+    @media (max-width: 500px){
+        font-size: 175%;
+    }
+
+    @media (max-width: 400px){
+        font-size: 150%;
+    }
+
 }
 
 .q-label{
     font-size: 200%;
     margin-right: 1%;
+    @media (max-width: 500px){
+        font-size: 175%;
+    }
+
+    @media (max-width: 400px){
+        font-size: 150%;
+    }
+
 }
 
 .q-p{
     font-size: 150%;
-    
+    @media (max-width: 500px){
+        font-size: 125%;
+    }
+
+    @media (max-width: 400px){
+        font-size: 100%;
+    }
+
 }
 
 .q-div-border{
