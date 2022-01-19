@@ -34,7 +34,8 @@ export default function Game() {
     }
 
     function handleReady() {
-        const ready = state.players.find(player => player.id == socket.id).ready
+        console.log(state.players.find(player => player.socketId == socket.id))
+        const ready = state.players.find(player => player.socketId == socket.id).ready
         if (!ready) {
             socket.emit('ready-up', lobbyId, () => {
                 setRdy(" ready")
@@ -62,7 +63,7 @@ export default function Game() {
             </form>
             <h3>{`Game Id - ${lobbyId}`}</h3>
             <ul>
-                {state.players.map((player, n) => <li key={n}>{player.player} - {player.ready ? "Ready" : "Not Ready"}</li>)}
+                {state.players.map((player, n) => <li key={n}>{player.name} - {player.ready ? "Ready" : "Not Ready"}</li>)}
             </ul>
 
             <button className={`butt${rdy}`} onClick={handleReady}>Ready Up</button>

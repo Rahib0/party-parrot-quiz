@@ -26,7 +26,7 @@ const gameReducer = (state = initState, action) => {
         case 'UPDATE_PLAYER_LIST':
             return ({
                     ...state, 
-                    players: action.payload.map(player => ({player: player.name, id: player.socketId, ready:false}))
+                    players: action.payload
             })
         
         case 'LOAD_QUESTIONS':
