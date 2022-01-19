@@ -9,12 +9,21 @@
   text-align: center;
 }
 
-.homepage h1 {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+@media (min-width: 600px) {
+  .homepage .phone {
+    display: none;
+  }
+}
+
+.homepage .title {
   font-size: 500%;
   text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .homepage .title {
+    font-size: 250%;
+  }
 }
 
 .homepage button {
@@ -25,15 +34,29 @@
 }
 
 .homepage table {
-  display: flexbox;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   margin-left: auto;
   margin-right: auto;
 }
 
-.homepage td {
-  display: table-cell;
-  vertical-align: inherit;
+.homepage table img {
+  max-width: 80px;
+  min-width: 10px;
+}
+
+@media (max-width: 600px) {
+  .homepage table img {
+    display: none;
+  }
+  .homepage .phone {
+    width: 70%;
+  }
+  .homepage h2 {
+    font-size: 100%;
+  }
+  .homepage #leader-btn {
+    margin-bottom: 15%;
+  }
 }
 /*# sourceMappingURL=homepage.css.map */

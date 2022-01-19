@@ -9,7 +9,7 @@ export default function Homepage() {
                 <table id='parrot-title-table'>
                     <tbody>
                         <tr>
-                            <td><img className='parrot' src={parrot} alt='Party Parrot' /></td>
+                            <td></td>
                             <td>
                                 <img className='parrot' src={parrot} alt='Party Parrot'/>
                                 <img className='parrot' src={parrot} alt='Party Parrot'/>
@@ -17,27 +17,48 @@ export default function Homepage() {
                                 <img className='parrot' src={parrot} alt='Party Parrot'/>
                                 <img className='parrot' src={parrot} alt='Party Parrot'/>
                                 <img className='parrot' src={parrot} alt='Party Parrot'/>
+                                <img className='parrot' src={parrot} alt='Party Parrot'/>
+                                <img className='parrot' src={parrot} alt='Party Parrot'/>
                             </td>
-                            <td><img className='parrot' src={parrot} alt='Party Parrot'/></td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td><img className='parrot' src={parrot} alt='Party Parrot'/></td>
-                            <td><h1>Party Parrot Quiz</h1></td>
-                            <td><img className='parrot' src={parrot} alt='Party Parrot'/></td>
+                            <td></td>
+                            <td><h1 className='title'>Party Parrot Quiz</h1></td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div id='create-btn'>
-                <a href='/create' className='create-game-btn'><button>Create Game</button></a>
+
+            <div>
+                <table>
+                    <tbody>
+                        <td><img className='parrot-btn' src={parrot} alt='Party Parrot'/></td>
+                        <td>
+                            <tr>
+                                <div id='create-btn'>
+                                    <a href='/create' className='create-game-btn'><button>Create Game</button></a>
+                                </div>
+                            </tr>
+                            <tr>
+                                <div id='join-btn'>
+                                    <a href='/join'><button>Join Game</button></a> 
+                                </div>
+                            </tr>
+                            <tr>
+                                <div id='leader-btn'>
+                                    <a href='/leaderboards'><button>Leaderboards</button></a>
+                                </div>
+                            </tr>
+                        </td>
+                        <td><img className='parrot-btn' src={parrot} alt='Party Parrot'/></td>
+                    </tbody>
+                </table>
             </div>
 
-            <div id='join-btn'>
-                <a href='/join'><button>Join Game</button></a> 
-            </div>
-            <div id='leader-btn'>
-                <a href='/leaderboards'><button>Leaderboards</button></a>
-            </div>
+
+
 
             <h2>"Do you have what it takes to answer the parrots questions?!"</h2>
             <h2 id='caution'>Proceed with Caution</h2>
@@ -53,6 +74,8 @@ export default function Homepage() {
 
                 </tr>
             </table>
+
+            <img className='phone' src={parrot}/>
         </div>
     )
 }

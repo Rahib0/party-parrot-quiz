@@ -11,14 +11,16 @@
           align-items: center;
   text-align: center;
   color: slategray;
+  background: #f0efef;
+  padding-bottom: 5%;
 }
 
 .create-game h1 {
   font-size: 500%;
-  margin-top: 8%;
   border-bottom: solid;
   width: 80%;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 5%;
 }
 /*# sourceMappingURL=creategame.css.map */

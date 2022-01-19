@@ -1,3 +1,4 @@
+@import '../Variables/variables.scss';
 
 .bck-btn{
     margin: auto;
@@ -9,13 +10,15 @@
     align-items: center;
     text-align: center;
     color: slategray;
+    background: $greyColor;
+    padding-bottom: 5%;
 
     h1{
         font-size: 500%;
-        margin-top: 8%;
         border-bottom: solid;
         width: 80%;
         margin-left:  auto;
         margin-right: auto;
+        padding-top: 5%;
     }
 }
