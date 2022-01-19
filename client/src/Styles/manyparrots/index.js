@@ -1,0 +1,1 @@
+export { default as parrot } from './parrots/hd/60fpsparrot.gif'

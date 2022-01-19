@@ -1,0 +1,31 @@
+.homepage {
+  background: #f0efef;
+  font-family: monospace, sans-serif;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: lightslategray;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 10%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.homepage h1 {
+  font-size: 80px;
+}
+
+.homepage button {
+  font-family: monospace, sans-serif;
+  border-radius: 8px;
+  margin: 10px;
+  font-size: 20px;
+}
+/*# sourceMappingURL=homepage.css.map */
