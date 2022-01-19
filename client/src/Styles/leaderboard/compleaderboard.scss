@@ -1,0 +1,43 @@
+.leadercomp{
+    font-size: 2em;
+}
+
+.top-scores{
+    width: 25%;
+    text-align: center;
+    align-items: center;
+    margin: auto;
+}
+
+.player_name{
+    padding-bottom: 0.5em;
+    border-bottom-style: dotted;
+    padding-top: 0.5em;
+}
+
+.select-difficulty{
+    border-radius: 15px;
+    font-family: monospace;
+}
+
+.select-catagory{
+    border-radius: 15px;
+    font-family: monospace;
+}
+
+.label-difficulty{
+    padding-right: 0.5em;
+    
+}
+
+.label-catagory{
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    border-left: solid;
+    margin-left: 0.5em;
+}
+
+.parameter_selection{
+    width: 80%;
+    margin: auto;
+}

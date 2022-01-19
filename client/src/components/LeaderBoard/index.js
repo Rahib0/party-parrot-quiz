@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import '../../Styles/leaderboard/compleaderboard.css';
 
 export default function LeaderBoard() {
     const [ parameters, setParameters ] = useState({ difficulty: "easy", category: 0 })
@@ -30,29 +31,32 @@ export default function LeaderBoard() {
     // }, [parameters])
 
     return (
-        <>
-            <div id='parameter_selection'>
-                <label htmlFor="difficulty">Difficulty</label>
-                <select name="difficulty" id="difficulty" value={parameters.difficulty} onChange={handleChange}>
+        <div className='leadercomp'>
+            <h1>Leaderboards</h1>
+
+            <div className='parameter_selection'>
+                <label className='label-difficulty' htmlFor="difficulty">Difficulty</label>
+                <select className='select-difficulty' name="difficulty" id="difficulty" value={parameters.difficulty} onChange={handleChange}>
                     <option value="easy">Easy</option>
                     <option value="medium">Medium</option>
                     <option value="hard">Hard</option>
                 </select>
 
-                <label htmlFor="category">Category</label>
-                <select name='category' id='category' value={parameters.category} onChange={handleChange}>
+                <label className='label-catagory' htmlFor="category">Category</label>
+                <select className='select-catagory' name='category' id='category' value={parameters.category} onChange={handleChange}>
                     {categoriesArray.map((topic, n) => <option key={n} value={topic.id}>{topic.name}</option>)}
                 </select>
             </div>
-            <h1>Leaderboards</h1>
+            
             <h2>{categoriesArray.find(topic => topic.id == parameters.category).name} - {parameters.difficulty.charAt(0).toUpperCase() + parameters.difficulty.slice(1)}</h2>
             
-            <ol className='leaderboard'>
+            <ol className='top-scores'>
                 {playersArray.map((player, i) => <li key={i}>
-                    <div className='player_name'>{player.name}</div>
-                    <div className='player_score'>{player.score} points</div>
+
+                    <div className='player_name'>{player.name}: {player.score} points</div>
+                    {/* <span><div className='player_score'>{player.score} points</div></span> */}
                 </li>)}
             </ol>
-        </>
+        </div>
     )
 }

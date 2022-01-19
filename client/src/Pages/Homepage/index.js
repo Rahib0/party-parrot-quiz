@@ -6,24 +6,24 @@ export default function Homepage() {
     return (
         <div className='homepage'>
             <div id='home-title'>
-                <table>
+                <table id='parrot-title-table'>
                     <tbody>
                         <tr>
-                            <td><img src={parrot} alt='Party Parrot' /></td>
+                            <td><img className='parrot' src={parrot} alt='Party Parrot' /></td>
                             <td>
-                                <img src={parrot} alt='Party Parrot'/>
-                                <img src={parrot} alt='Party Parrot'/>
-                                <img src={parrot} alt='Party Parrot'/>
-                                <img src={parrot} alt='Party Parrot'/>
-                                <img src={parrot} alt='Party Parrot'/>
-                                <img src={parrot} alt='Party Parrot'/>
+                                <img className='parrot' src={parrot} alt='Party Parrot'/>
+                                <img className='parrot' src={parrot} alt='Party Parrot'/>
+                                <img className='parrot' src={parrot} alt='Party Parrot'/>
+                                <img className='parrot' src={parrot} alt='Party Parrot'/>
+                                <img className='parrot' src={parrot} alt='Party Parrot'/>
+                                <img className='parrot' src={parrot} alt='Party Parrot'/>
                             </td>
-                            <td><img src={parrot} alt='Party Parrot'/></td>
+                            <td><img className='parrot' src={parrot} alt='Party Parrot'/></td>
                         </tr>
                         <tr>
-                            <td><img src={parrot} alt='Party Parrot'/></td>
+                            <td><img className='parrot' src={parrot} alt='Party Parrot'/></td>
                             <td><h1>Party Parrot Quiz</h1></td>
-                            <td><img src={parrot} alt='Party Parrot'/></td>
+                            <td><img className='parrot' src={parrot} alt='Party Parrot'/></td>
                         </tr>
                     </tbody>
                 </table>
