@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { io } from 'socket.io-client'
 import { useSelector, useDispatch } from 'react-redux'
-import { addSocket, changeName, updatePlayer } from '../../actions'
+import { addSocket, changeName, updatePlayer, changeGameState } from '../../actions'
 
 export default function Game() {
     const { lobbyid: lobbyId } = useParams()
     const [rdy, setRdy] = useState(" not_ready")
+    const [ playerSelectOption, setPlayerSelectOption ] = useState()
     const socket = useSelector(state => state.socket)
     const name = useSelector(state => state.name)
     const state = useSelector(state => state)
@@ -56,17 +57,45 @@ export default function Game() {
 
     return (
         <>
-            <h1>Waiting Area</h1>
-            <form onSubmit={handleSubmit}>
-                <input required type='text' value={changeNameVar} onChange={(e) => {setChangeNameVar(e.target.value)}} placeholder='enter name' />
-                <input type="submit" value="Change Name" />
-            </form>
-            <h3>{`Game Id - ${lobbyId}`}</h3>
-            <ul>
-                {state.players.map((player, n) => <li key={n}>{player.name} - {player.ready ? "Ready" : "Not Ready"}</li>)}
-            </ul>
+            {(!state.gameState) ? 
+            <>
+                <h1>Waiting Area</h1>
+                <form onSubmit={handleSubmit}>
+                    <input required type='text' value={changeNameVar} onChange={(e) => {setChangeNameVar(e.target.value)}} placeholder='enter name' />
+                    <input type="submit" value="Change Name" />
+                </form>
+                <h3>{`Game Id - ${lobbyId}`}</h3>
+                <ul>
+                    {state.players.map((player, n) => <li key={n}>{player.name} - {player.ready ? "Ready" : "Not Ready"}</li>)}
+                </ul>
 
-            <button className={`butt${rdy}`} onClick={handleReady}>Ready Up</button>
+                <button className={`butt${rdy}`} onClick={handleReady}>Ready Up</button>
+                <button className={`butt${rdy}`} onClick={() => dispatch(changeGameState(1))}>start game dev</button>
+            </> :
+            (state.gameState === 1) ?
+            <>
+                {console.log(state.gameState)}
+                <h1>GAME STARTED</h1>
+                <p className='question'>The question for each round will be displayed here</p>
+                <p>{playerSelectOption && `Option ${playerSelectOption} has been picked`}</p>
+                <div>
+                    <button onClick={() => setPlayerSelectOption(1)}>Option 1</button>
+                    <button onClick={() => setPlayerSelectOption(2)}> Option 2</button>
+                    <button onClick={() => setPlayerSelectOption(3)}>Option 3</button>
+                    <button onClick={() => setPlayerSelectOption(4)}>Option 4</button>
+                </div>
+                <button className={`butt${rdy}`} onClick={() => dispatch(changeGameState(2))}>start game dev</button>
+                
+            </> :
+            <>
+                {console.log(state.gameState)}
+                <h1>Game Summary</h1>
+                <ul>
+                    {state.players.map((player, n) => <li key={n}>{player.name} - Score will be displayed here</li>)}
+                </ul>
+            </>
+            }
+                
         </>
     )
 }

@@ -23,6 +23,13 @@ const gameReducer = (state = initState, action) => {
                 lobbyId: action.payload.lobbyId
             })
         
+        case 'UPDATE_GAME_STATE':
+            console.log("starting game")
+            return({
+                ...state,
+                gameState: action.payload
+            })
+        
         case 'UPDATE_PLAYER_LIST':
             return ({
                     ...state, 

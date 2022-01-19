@@ -20,6 +20,11 @@ export const updatePlayer = (payload) => ({
     payload
 })
 
+export const changeGameState = (payload) => ({
+    type: "UPDATE_GAME_STATE",
+    payload
+})
+
 export const storeQuestions = (payload) => ({
     type: "LOAD_QUESTIONS",
     payload

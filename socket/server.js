@@ -7,18 +7,29 @@ const io = require("socket.io")(3001, {
 let gamesArray = []
 
 function addPlayer(lobbyId, name, socketId) {
-    const game = gamesArray.find(game => game.lobbyId == lobbyId)
-    game.players.push({ name, socketId, ready: false })
-    console.log("new array: ", gamesArray)
-    console.log(game.players)
+    if (!gamesArray) {return}
+    try {
+        const game = gamesArray.find(game => game.lobbyId == lobbyId)
+        game.players.push({ name, socketId, ready: false })
+        console.log("new array: ", gamesArray)
+        console.log(game.players)
+    } catch {
+        e => console.log(e)
+    }
+    
 }
 
 function removePlayer( lobbyId, socketId) {
-    if (!gamesArray) {return}
-    const game = gamesArray.find(game => game.lobbyId == lobbyId)
-    let players = game.players.filter(player => player.socketId != socketId)
-    game.players = players
-    console.log(gamesArray)
+    try {
+        if (!gamesArray) {return}
+        const game = gamesArray.find(game => game.lobbyId == lobbyId)
+        let players = game.players.filter(player => player.socketId != socketId)
+        game.players = players
+        console.log(gamesArray)
+    } catch {
+        e => console.log(e)
+    }
+    
 
     // console.log("player info: ", player)
     // console.log("game info: ", game)
@@ -55,19 +66,29 @@ function removePlayer( lobbyId, socketId) {
 }
 
 function changePlayerName(lobbyId, name, socketId) {
-    const game = gamesArray.find(game => game.lobbyId == lobbyId)
-    let player = game.players.find(player => player.socketId == socketId)
-    const index = game.players.findIndex(player => player.socketId == socketId)
-    player = { ...player, name: name }
-    game.players[index] = player 
+    try {
+        const game = gamesArray.find(game => game.lobbyId == lobbyId)
+        let player = game.players.find(player => player.socketId == socketId)
+        const index = game.players.findIndex(player => player.socketId == socketId)
+        player = { ...player, name: name }
+        game.players[index] = player 
+    } catch {
+        e => console.log(e)
+    }
+    
     // console.log("player info: ", player)
     // console.log("game info: ", game)
 }
 
 function playerArray(lobbyId) {
-    const game = gamesArray.find(game => game.lobbyId == lobbyId)
-    // console.log(game.players)
-    return game.players
+    try {
+        const game = gamesArray.find(game => game.lobbyId == lobbyId)
+        // console.log(game.players)
+        return game.players
+    } catch {
+        e => console.log(e)
+    }
+    
 }
 
 function togglePlayerReady(lobbyId, socketId, ready=true) {
@@ -96,8 +117,13 @@ io.on('connection', socket => {
     socket.on('join-lobby', (lobbyId, name) => {
         console.log(`lobby id is [${lobbyId}], name is ${name}`)
         socket.join(lobbyId)
-        addPlayer(lobbyId, name, socket.id)
-        io.in(lobbyId).emit('update-player-lobby', playerArray(lobbyId))
+        try {
+            addPlayer(lobbyId, name, socket.id)
+            io.in(lobbyId).emit('update-player-lobby', playerArray(lobbyId))
+        } catch {
+            e => console.log(e)
+        }
+        
     })
 
     socket.on('disconnecting', () => {
