@@ -5,6 +5,11 @@ export const addSocket = (payload) => ({
     payload
 })
 
+export const createLobby = (payload) => ({
+    type: "CREATE_LOBBY",
+    payload
+})
+
 export const addPlayer = (payload) => ({
     type: "ADD_PLAYER",
     payload

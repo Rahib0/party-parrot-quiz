@@ -1,4 +1,4 @@
-const initState = {players: [], answers: []}
+const initState = { game: { lobbyId: "", myScore: 0, myAnswers: [], players: [], currentQuestionNumber: 1 }, name: "Guest"}
 
 const gameReducer = (state = initState, action) => {
     switch (action.type){
@@ -7,6 +7,15 @@ const gameReducer = (state = initState, action) => {
                 ...state, 
                 socket: action.payload
             })
+        
+        case 'CREATE_LOBBY':
+            return ({
+                ...state.game,
+                lobbyId: action.payload.lobbyId,
+                players: [{ name: action.payload.name }],
+                name: action.payload.name
+            })
+        
         case 'ADD_PLAYER':
             return ({
                     ...state, 
