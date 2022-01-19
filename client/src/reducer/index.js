@@ -30,6 +30,14 @@ const gameReducer = (state = initState, action) => {
                 gameState: action.payload
             })
         
+        case 'LOAD_QUESTION':
+            console.log("loading the question!")
+            return({
+                ...state,
+                question: action.payload.question,
+                answers: action.payload.possibleAnswers
+            })
+        
         case 'UPDATE_PLAYER_LIST':
             return ({
                     ...state, 
@@ -45,7 +53,7 @@ const gameReducer = (state = initState, action) => {
         case 'ADD_ANSWER':
             return ({
                 ...state,
-                answers: state.answers.concat([action.payload])
+                myAnswers: [ ...state.myAnswers, action.payload ]
         })
 
         case 'SET_ERROR':

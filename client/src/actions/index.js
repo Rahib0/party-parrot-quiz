@@ -25,6 +25,11 @@ export const changeGameState = (payload) => ({
     payload
 })
 
+export const loadQuestion = (payload) => ({
+    type: "LOAD_QUESTION",
+    payload
+})
+
 export const storeQuestions = (payload) => ({
     type: "LOAD_QUESTIONS",
     payload

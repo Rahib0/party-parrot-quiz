@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { io } from 'socket.io-client'
 import { useSelector, useDispatch } from 'react-redux'
-import { addSocket, changeName, updatePlayer, changeGameState } from '../../actions'
+import { addSocket, changeName, updatePlayer, changeGameState, loadQuestion, storeAnswer } from '../../actions'
 
 export default function Game() {
     const { lobbyid: lobbyId } = useParams()
@@ -24,6 +24,15 @@ export default function Game() {
             s.on('update-player-lobby', playerArray => {
                 console.log(playerArray)
                 dispatch(updatePlayer(playerArray))
+            })
+            s.on('game-start', firstQuestion => {
+                console.log("I am being run wahoo!")
+                console.log(firstQuestion)
+                dispatch(loadQuestion(firstQuestion))
+                dispatch(changeGameState(1))
+                console.log(firstQuestion)
+                
+
             })
         })
     }, [])
@@ -53,7 +62,23 @@ export default function Game() {
     useEffect(() => {
         console.log(state)
     }, [state])
+
+    useEffect(() => {
+        console.log(playerSelectOption)
+    }, [playerSelectOption])
     
+
+    function handlePickAnswer(e) {
+        console.log(e.target.value)
+        // console.log(e.value)
+        // console.log(e)
+        setPlayerSelectOption(e.target.value)
+    }
+
+    function handleFinalAnswer(e) {
+        console.log(playerSelectOption)
+        dispatch(storeAnswer(playerSelectOption))
+    }
 
     return (
         <>
@@ -76,14 +101,16 @@ export default function Game() {
             <>
                 {console.log(state.gameState)}
                 <h1>GAME STARTED</h1>
-                <p className='question'>The question for each round will be displayed here</p>
-                <p>{playerSelectOption && `Option ${playerSelectOption} has been picked`}</p>
+                <p className='question'>{state.question}</p>
+                <p>{playerSelectOption && `${playerSelectOption} has been picked`}</p>
                 <div>
-                    <button onClick={() => setPlayerSelectOption(1)}>Option 1</button>
-                    <button onClick={() => setPlayerSelectOption(2)}> Option 2</button>
-                    <button onClick={() => setPlayerSelectOption(3)}>Option 3</button>
-                    <button onClick={() => setPlayerSelectOption(4)}>Option 4</button>
+                    
+                    <button onClick={handlePickAnswer} value={state.answers[0]}>{state.answers[0]}</button>
+                    <button onClick={handlePickAnswer} value={state.answers[1]} > {state.answers[1]}</button>
+                    <button onClick={handlePickAnswer} value={state.answers[2]} >{state.answers[2]}</button>
+                    <button onClick={handlePickAnswer} value={state.answers[3]} >{state.answers[3]}</button>
                 </div>
+                <button onClick={handleFinalAnswer} >FINALIZE</button>
                 <button className={`butt${rdy}`} onClick={() => dispatch(changeGameState(2))}>start game dev</button>
                 
             </> :

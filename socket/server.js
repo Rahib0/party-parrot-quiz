@@ -1,3 +1,5 @@
+const axios = require('axios')
+
 const io = require("socket.io")(3001, {
     cors: {
         origin: ['http://localhost:3000']
@@ -76,10 +78,10 @@ function togglePlayerReady(lobbyId, socketId, ready=true) {
     const index = game.players.findIndex(player => player.socketId == socketId)
     player = { ...player, ready: ready }
     game.players[index] = player 
-    readyCheck(game)
-     console.log("player info: ", player)
-     console.log("game info: ", game)
+    console.log("player info: ", player)
+    console.log("game info: ", game)
 }
+
 function readyCheck(aGame){
     let readyPlayerAmount = 0
     for(let i = 0; i<aGame.players.length ;i++){
@@ -137,6 +139,24 @@ io.on('connection', socket => {
         togglePlayerReady(lobbyId, socket.id)
         io.in(lobbyId).emit('update-player-lobby', playerArray(lobbyId))
         cb()
+        let game = gamesArray.find(game => game.lobbyId == lobbyId)
+        if (readyCheck(game)) {
+            axios.get(`https://opentdb.com/api.php?amount=${game.totalQuestions}&category=${game.category}&difficulty=${game.difficulty}&type=multiple`)
+            .then(res => {
+                // console.log(res.data.results)
+                game = { ...game, questionsHolder: res.data.results }
+                console.log(game.questionsHolder[0])
+                const q = game.questionsHolder[0]
+                loadedQuestion = { question: q.question, possibleAnswers: q.incorrect_answers.concat([q.correct_answer]).sort(() => Math.random() - 0.5) }
+                console.log(loadedQuestion)
+                io.in(lobbyId).emit('game-start', loadedQuestion)
+            })
+            // socket.to(lobbyId).emit('game-start', () => {
+
+            // })
+        }
+
+
     })
 
     socket.on('ready-down', (lobbyId, cb) => {
