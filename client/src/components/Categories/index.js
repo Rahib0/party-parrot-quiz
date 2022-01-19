@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import '../../Styles/createGame/compCatagories/compcatagories.css'
 
 export default function Categories({ input, setInput }) {
     const [ categoriesArray, setCategoriesArray ] = useState([])
@@ -21,8 +22,8 @@ export default function Categories({ input, setInput }) {
     
     return (
         <>
-            <label>Select Category: </label>
-            <select name='category' id='category' onChange={handleChange}>
+            <label className='cat-label'>Select Category: </label>
+            <select className='cat-select' name='category' id='category' onChange={handleChange}>
                 <option value={0}>Any Category</option>
                 {categoriesArray.map((topic, n) => <option key={n} value={topic.id}>{topic.name}</option>)}
             </select>

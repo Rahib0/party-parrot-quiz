@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Categories, QuestionCount } from '..'
-
+import '../../Styles/createGame/createform.css'
 
 
 export default function FormCreateGame() {
@@ -22,8 +22,8 @@ export default function FormCreateGame() {
         <div>
             {console.log("input is: ", input)}
             <form onSubmit={handleSubmit}>
-                <div>
-                    <input type='text' onChange={(e) => {setInput({ ...input, name: e.target.value })}} placeholder='enter name' />
+                <div className='name'>
+                    <input type='text' onChange={(e) => {setInput({ ...input, name: e.target.value })}} placeholder='enter your name' />
                 </div>
                 
                 <div>
@@ -35,8 +35,8 @@ export default function FormCreateGame() {
                 </div>
 
                 <div>
-                    <label htmlFor="difficulty">Difficulty</label>
-                    <select name='difficulty' onChange={(e) => {setInput({ ...input, difficulty: e.target.value })}}>
+                    <label className='diff-label' htmlFor="difficulty">Difficulty:</label>
+                    <select className='diff-select' name='difficulty' onChange={(e) => {setInput({ ...input, difficulty: e.target.value })}}>
                         <option value="easy">Easy</option>
                         <option value="medium">Medium</option>
                         <option value="hard">Hard</option>
@@ -44,7 +44,7 @@ export default function FormCreateGame() {
                 </div>
 
                 <div>
-                    <input type="submit" value='Create Game'/>
+                    <input className='create-btn' type="submit" value='Create Game'/>
                     
                 </div>
             </form>

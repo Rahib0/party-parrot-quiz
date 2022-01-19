@@ -1,0 +1,57 @@
+.name {
+  font-family: monospace;
+  margin-bottom: 1.5%;
+  margin-top: 3%;
+}
+
+.name ::-webkit-input-placeholder {
+  font-family: monospace;
+  font-size: 200%;
+}
+
+.name :-ms-input-placeholder {
+  font-family: monospace;
+  font-size: 200%;
+}
+
+.name ::-ms-input-placeholder {
+  font-family: monospace;
+  font-size: 200%;
+}
+
+.name ::placeholder {
+  font-family: monospace;
+  font-size: 200%;
+}
+
+.name input {
+  border-radius: 10px;
+  margin-bottom: 1%;
+  text-align: center;
+  width: 30%;
+  padding-top: 1.25%;
+  padding-bottom: 1%;
+}
+
+.diff-label {
+  margin-right: 1%;
+  font-size: 200%;
+}
+
+.diff-select {
+  border-radius: 10px;
+  text-align: center;
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
+  font-family: monospace;
+  font-size: 150%;
+}
+
+.create-btn {
+  border-radius: 10px;
+  margin-top: 1.5%;
+  font-family: monospace;
+  font-size: 250%;
+  color: #606e7c;
+}
+/*# sourceMappingURL=createform.css.map */

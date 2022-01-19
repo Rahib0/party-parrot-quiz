@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,WAAW,CAAA;EACP,WAAW,EAAE,SAAS;EACtB,aAAa,EAAE,IAAI;EACnB,aAAa,EAAE,EAAE;EACjB,KAAK,EAAE,KAAK;EACZ,UAAU,EAAE,MAAM;EAClB,SAAS,EAAE,IAAI;CAClB;;AAED,AAAA,UAAU,CAAA;EACN,SAAS,EAAE,IAAI;CAGlB",
+    "sources": [
+        "compcatagories.scss"
+    ],
+    "names": [],
+    "file": "compcatagories.css"
+}
