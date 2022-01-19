@@ -7,29 +7,18 @@ const io = require("socket.io")(3001, {
 let gamesArray = []
 
 function addPlayer(lobbyId, name, socketId) {
-    if (!gamesArray) {return}
-    try {
-        const game = gamesArray.find(game => game.lobbyId == lobbyId)
-        game.players.push({ name, socketId, ready: false })
-        console.log("new array: ", gamesArray)
-        console.log(game.players)
-    } catch {
-        e => console.log(e)
-    }
-    
+    const game = gamesArray.find(game => game.lobbyId == lobbyId)
+    game.players.push({ name, socketId, ready: false })
+    console.log("new array: ", gamesArray)
+    console.log(game.players)
 }
 
 function removePlayer( lobbyId, socketId) {
-    try {
-        if (!gamesArray) {return}
-        const game = gamesArray.find(game => game.lobbyId == lobbyId)
-        let players = game.players.filter(player => player.socketId != socketId)
-        game.players = players
-        console.log(gamesArray)
-    } catch {
-        e => console.log(e)
-    }
-    
+    if (!gamesArray) {return}
+    const game = gamesArray.find(game => game.lobbyId == lobbyId)
+    let players = game.players.filter(player => player.socketId != socketId)
+    game.players = players
+    console.log(gamesArray)
 
     // console.log("player info: ", player)
     // console.log("game info: ", game)
@@ -66,29 +55,19 @@ function removePlayer( lobbyId, socketId) {
 }
 
 function changePlayerName(lobbyId, name, socketId) {
-    try {
-        const game = gamesArray.find(game => game.lobbyId == lobbyId)
-        let player = game.players.find(player => player.socketId == socketId)
-        const index = game.players.findIndex(player => player.socketId == socketId)
-        player = { ...player, name: name }
-        game.players[index] = player 
-    } catch {
-        e => console.log(e)
-    }
-    
+    const game = gamesArray.find(game => game.lobbyId == lobbyId)
+    let player = game.players.find(player => player.socketId == socketId)
+    const index = game.players.findIndex(player => player.socketId == socketId)
+    player = { ...player, name: name }
+    game.players[index] = player 
     // console.log("player info: ", player)
     // console.log("game info: ", game)
 }
 
 function playerArray(lobbyId) {
-    try {
-        const game = gamesArray.find(game => game.lobbyId == lobbyId)
-        // console.log(game.players)
-        return game.players
-    } catch {
-        e => console.log(e)
-    }
-    
+    const game = gamesArray.find(game => game.lobbyId == lobbyId)
+    // console.log(game.players)
+    return game.players
 }
 
 function togglePlayerReady(lobbyId, socketId, ready=true) {
@@ -97,12 +76,25 @@ function togglePlayerReady(lobbyId, socketId, ready=true) {
     const index = game.players.findIndex(player => player.socketId == socketId)
     player = { ...player, ready: ready }
     game.players[index] = player 
-    // console.log("player info: ", player)
-    // console.log("game info: ", game)
+    readyCheck(game)
+     console.log("player info: ", player)
+     console.log("game info: ", game)
 }
-
-function checkIfEveryoneReady(lobbyId) {
-
+function readyCheck(aGame){
+    let readyPlayerAmount = 0
+    for(let i = 0; i<aGame.players.length ;i++){
+        if( aGame.players[i].ready = true){
+            readyPlayerAmount++;
+        }
+    }
+    if(readyPlayerAmount === aGame.players.length){
+        console.log("TRUE")
+        return (true)
+    }
+    else{
+        console.log("FALSE")
+        return (false)
+    }
 }
 
 
@@ -117,13 +109,8 @@ io.on('connection', socket => {
     socket.on('join-lobby', (lobbyId, name) => {
         console.log(`lobby id is [${lobbyId}], name is ${name}`)
         socket.join(lobbyId)
-        try {
-            addPlayer(lobbyId, name, socket.id)
-            io.in(lobbyId).emit('update-player-lobby', playerArray(lobbyId))
-        } catch {
-            e => console.log(e)
-        }
-        
+        addPlayer(lobbyId, name, socket.id)
+        io.in(lobbyId).emit('update-player-lobby', playerArray(lobbyId))
     })
 
     socket.on('disconnecting', () => {
