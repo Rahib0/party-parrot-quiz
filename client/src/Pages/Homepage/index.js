@@ -9,21 +9,21 @@ export default function Homepage() {
                 <table>
                     <tbody>
                         <tr>
-                            <td><img src={parrot} /></td>
+                            <td><img src={parrot} alt='Party Parrot' /></td>
                             <td>
-                                <img src={parrot} />
-                                <img src={parrot} />
-                                <img src={parrot} />
-                                <img src={parrot} />
-                                <img src={parrot} />
-                                <img src={parrot} />
+                                <img src={parrot} alt='Party Parrot'/>
+                                <img src={parrot} alt='Party Parrot'/>
+                                <img src={parrot} alt='Party Parrot'/>
+                                <img src={parrot} alt='Party Parrot'/>
+                                <img src={parrot} alt='Party Parrot'/>
+                                <img src={parrot} alt='Party Parrot'/>
                             </td>
-                            <td><img src={parrot} /></td>
+                            <td><img src={parrot} alt='Party Parrot'/></td>
                         </tr>
                         <tr>
-                            <td><img src={parrot} /></td>
+                            <td><img src={parrot} alt='Party Parrot'/></td>
                             <td><h1>Party Parrot Quiz</h1></td>
-                            <td><img src={parrot} /></td>
+                            <td><img src={parrot} alt='Party Parrot'/></td>
                         </tr>
                     </tbody>
                 </table>
@@ -38,16 +38,19 @@ export default function Homepage() {
             <div id='leader-btn'>
                 <a href='/leaderboards'><button>Leaderboards</button></a>
             </div>
+
+            <h2>"Do you have what it takes to answer the parrots questions?!"</h2>
+            <h2 id='caution'>Proceed with Caution</h2>
             <table>
                 <tr>
-                    <img src={parrot} />
-                    <img src={parrot} />
-                    <img src={parrot} />
-                    <img src={parrot} />
-                    <img src={parrot} />
-                    <img src={parrot} />
-                    <img src={parrot} />
-                    
+                    <img src={parrot} alt='Party Parrot'/>
+                    <img src={parrot} alt='Party Parrot'/>
+                    <img src={parrot} alt='Party Parrot'/>
+                    <img src={parrot} alt='Party Parrot'/>
+                    <img src={parrot} alt='Party Parrot'/>
+                    <img src={parrot} alt='Party Parrot'/>
+                    <img src={parrot} alt='Party Parrot'/>
+
                 </tr>
             </table>
         </div>
