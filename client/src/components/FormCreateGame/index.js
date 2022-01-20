@@ -7,7 +7,7 @@ import { createLobby } from '../../actions'
 
 
 export default function FormCreateGame() {
-    const [ input, setInput ] = useState({ name: "", questions: 10, topic: 0, difficulty: "easy" })
+    const [ input, setInput ] = useState({ questions: 10, topic: 0, difficulty: "easy" })
     const socket = useSelector(state => state.socket)
     const state = useSelector(state => state)
     const dispatch = useDispatch()
@@ -22,7 +22,7 @@ export default function FormCreateGame() {
             let lobbyId = uuidv4()
             console.log(lobbyId)
             s.emit('create-room', lobbyId, input, () => {
-                dispatch(createLobby({ lobbyId: lobbyId, name: input.name }))
+                dispatch(createLobby({ lobbyId: lobbyId }))
                 console.log(state)
                 window.location.assign(`http://localhost:3000/game/${lobbyId}`)
             }) 
@@ -58,10 +58,7 @@ export default function FormCreateGame() {
         <div>
             {console.log("input is: ", input)}
             <form onSubmit={handleSubmit}>
-                <div>
-                    <input required type='text' onChange={(e) => {setInput({ ...input, name: e.target.value })}} placeholder='enter name' />
-                </div>
-                
+
                 <div>
                     <QuestionCount input={input} setInput={setInput}/>
                 </div>
