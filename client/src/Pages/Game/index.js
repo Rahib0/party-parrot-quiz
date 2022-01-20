@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { io } from 'socket.io-client'
 import { useSelector, useDispatch } from 'react-redux'
-import { addSocket, changeName, updatePlayer, changeGameState, loadQuestion, storeAnswer } from '../../actions'
+import { addSocket, changeName, updatePlayer, changeGameState, loadQuestion, storeAnswer, storeQuestionsList } from '../../actions'
+import { Back } from '../../components'
 
 export default function Game() {
     const { lobbyid: lobbyId } = useParams()
@@ -36,6 +37,12 @@ export default function Game() {
                     console.log(nextQuestion)
                     setPlayerSelectOption("")
                     dispatch(loadQuestion(nextQuestion))
+                })
+                s.on('game-summary', questionsList => {
+                    dispatch(changeGameState(2))
+                    console.log(questionsList)
+                    dispatch(storeQuestionsList(questionsList))
+
                 })
                 
 
@@ -125,11 +132,19 @@ export default function Game() {
                 
             </> :
             <>
+                <Back />
                 {console.log(state.gameState)}
                 <h1>Game Summary</h1>
                 <ul>
-                    {state.players.map((player, n) => <li key={n}>{player.name} - Score will be displayed here</li>)}
+                    {state.players.map((player, n) => <li key={n}>{player.name} - {player.score} pts</li>)}
                 </ul>
+                <ol>
+                    {state.questionsList && state.questionsList.map((question, n) => <li key={n}>
+                        <span>{question.question}</span>
+                        <p>{question.correct_answer}</p>
+                        <p>You Answered: {state.myAnswers[n]}</p>
+                    </li>)}
+                </ol>
             </>
             }
                 

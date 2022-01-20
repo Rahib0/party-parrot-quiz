@@ -44,10 +44,10 @@ const gameReducer = (state = initState, action) => {
                     players: action.payload
             })
         
-        case 'LOAD_QUESTIONS':
+        case 'LOAD_QUESTIONSLIST':
             return ({
                 ...state,
-                questions:[...action.payload],
+                questionsList:[...action.payload],
               }) 
         
         case 'ADD_ANSWER':

@@ -30,8 +30,8 @@ export const loadQuestion = (payload) => ({
     payload
 })
 
-export const storeQuestions = (payload) => ({
-    type: "LOAD_QUESTIONS",
+export const storeQuestionsList = (payload) => ({
+    type: "LOAD_QUESTIONSLIST",
     payload
 })
 
