@@ -1,0 +1,57 @@
+@import '../Variables/variables.scss';
+
+.bck-btn{
+    margin: auto;
+    margin-top: 5%;
+}
+.create-game{
+    margin: auto;
+    font-family: monospace;
+    align-items: center;
+    text-align: center;
+    color: slategray;
+    background: $greyColor;
+    padding-bottom: 5%;
+
+    h1{
+        font-size: 500%;
+        border-bottom: solid;
+        width: 80%;
+        margin-left:  auto;
+        margin-right: auto;
+        padding-top: 5%;
+    }
+
+    @media (max-width: 740px) {
+        h1{
+            font-size: 400%;
+        }
+        img{
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 550px) {
+        h1{
+            font-size: 300%;
+        }
+        img{
+            width: 75%;
+        }
+    }
+
+    @media (max-width: 430px) {
+        h1{
+            font-size: 225%;
+        }
+        img{
+            width: 50%;
+        }
+    }
+
+
+}
+
+table{
+    margin: auto;
+}

@@ -1,0 +1,49 @@
+@import '../Variables/variables.scss';
+
+
+    .join-game{
+        background: $greyColor;
+        font-family: monospace, sans-serif;
+        align-items: center;
+        color: lightslategray;
+        text-align: center;
+
+        h1{
+            font-size: 500%;
+            text-decoration: underline;
+
+            @media(max-width: 720px){
+                font-size: 450%;
+            }
+
+            @media(max-width: 680px){
+                font-size: 400%;
+            }
+
+            @media(max-width: 640px){
+                font-size: 350%;
+            }
+
+            @media(max-width: 500px){
+                font-size: 300%;
+            }
+        }
+
+        @media(max-width: 600px){
+            .title-parrot{
+                display: none;
+            }
+            .phone{
+                width: 90%;
+            }
+        }
+        @media(max-width: 500px){
+            .title-parrot{
+                display: none;
+            }
+            .phone{
+                width: 80%;
+            }
+        }
+
+    }

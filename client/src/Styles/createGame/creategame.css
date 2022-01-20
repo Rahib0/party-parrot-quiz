@@ -1,0 +1,57 @@
+.bck-btn {
+  margin: auto;
+  margin-top: 5%;
+}
+
+.create-game {
+  margin: auto;
+  font-family: monospace;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  color: slategray;
+  background: #f0efef;
+  padding-bottom: 5%;
+}
+
+.create-game h1 {
+  font-size: 500%;
+  border-bottom: solid;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 5%;
+}
+
+@media (max-width: 740px) {
+  .create-game h1 {
+    font-size: 400%;
+  }
+  .create-game img {
+    width: 100%;
+  }
+}
+
+@media (max-width: 550px) {
+  .create-game h1 {
+    font-size: 300%;
+  }
+  .create-game img {
+    width: 75%;
+  }
+}
+
+@media (max-width: 430px) {
+  .create-game h1 {
+    font-size: 225%;
+  }
+  .create-game img {
+    width: 50%;
+  }
+}
+
+table {
+  margin: auto;
+}
+/*# sourceMappingURL=creategame.css.map */

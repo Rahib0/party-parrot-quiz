@@ -1,0 +1,61 @@
+.homepage {
+  background: #f0efef;
+  font-family: monospace, sans-serif;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: lightslategray;
+  text-align: center;
+}
+
+@media (min-width: 600px) {
+  .homepage .phone {
+    display: none;
+  }
+}
+
+.homepage .title {
+  font-size: 500%;
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .homepage .title {
+    font-size: 250%;
+  }
+}
+
+.homepage button {
+  font-family: monospace, sans-serif;
+  border-radius: 8px;
+  margin: 10px;
+  font-size: 20px;
+}
+
+.homepage table {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.homepage table img {
+  max-width: 80px;
+  min-width: 10px;
+}
+
+@media (max-width: 600px) {
+  .homepage table img {
+    display: none;
+  }
+  .homepage .phone {
+    width: 70%;
+  }
+  .homepage h2 {
+    font-size: 100%;
+  }
+  .homepage #leader-btn {
+    margin-bottom: 15%;
+  }
+}
+/*# sourceMappingURL=homepage.css.map */

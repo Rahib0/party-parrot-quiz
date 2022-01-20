@@ -1,6 +1,6 @@
 import React from "react";
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import { CreateGame, Homepage, JoinGame, ErrorPage, Leaderboards } from "./Pages";
+import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { CreateGame, Homepage, JoinGame, ErrorPage, Leaderboards, Game } from "./Pages";
 
 
 function App() {
@@ -12,7 +12,8 @@ function App() {
                     <Route path='/create' element={<CreateGame />} />
                     <Route path='/join' element={<JoinGame />} />
                     <Route path='/leaderboards' element={<Leaderboards />} />
-                    {/* <Route path='/game/:lobbyid?' element={<Game />} /> */}
+                    <Route path='/game' element={<JoinGame />} />
+                    <Route path='/game/:lobbyid' element={<Game />} />
                     <Route path='*' element={<ErrorPage />} />
                     
                 </Routes>
