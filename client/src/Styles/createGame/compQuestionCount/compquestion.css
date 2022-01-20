@@ -59,4 +59,10 @@
   margin: 0 auto;
   margin-bottom: 1%;
 }
+
+@media (min-width: 500px) {
+  .create-phone {
+    display: none;
+  }
+}
 /*# sourceMappingURL=compquestion.css.map */

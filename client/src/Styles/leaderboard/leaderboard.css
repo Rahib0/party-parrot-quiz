@@ -2,10 +2,12 @@
   font-family: monospace;
   text-align: center;
   color: lightslategray;
+  background: #f0efef;
 }
 
 .bck-btn {
   margin: auto;
   margin-top: 5%;
+  margin-bottom: 5%;
 }
 /*# sourceMappingURL=leaderboard.css.map */

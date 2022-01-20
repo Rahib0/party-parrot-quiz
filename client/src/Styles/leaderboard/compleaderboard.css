@@ -1,5 +1,29 @@
-.leadercomp {
-  font-size: 2em;
+.leadercomp h1 {
+  font-size: 500%;
+}
+
+@media (max-width: 720px) {
+  .leadercomp h1 {
+    font-size: 450%;
+  }
+}
+
+@media (max-width: 680px) {
+  .leadercomp h1 {
+    font-size: 400%;
+  }
+}
+
+@media (max-width: 640px) {
+  .leadercomp h1 {
+    font-size: 350%;
+  }
+}
+
+@media (max-width: 500px) {
+  .leadercomp h1 {
+    font-size: 300%;
+  }
 }
 
 .top-scores {
@@ -11,6 +35,48 @@
   margin: auto;
 }
 
+@media (max-width: 720px) {
+  .top-scores {
+    width: 30%;
+  }
+}
+
+@media (max-width: 630px) {
+  .top-scores {
+    width: 35%;
+  }
+}
+
+@media (max-width: 560px) {
+  .top-scores {
+    width: 40%;
+  }
+}
+
+@media (max-width: 500px) {
+  .top-scores {
+    width: 45%;
+  }
+}
+
+@media (max-width: 450px) {
+  .top-scores {
+    width: 50%;
+  }
+}
+
+@media (max-width: 400px) {
+  .top-scores {
+    width: 55%;
+  }
+}
+
+@media (max-width: 350px) {
+  .top-scores {
+    width: 60%;
+  }
+}
+
 .player_name {
   padding-bottom: 0.5em;
   border-bottom-style: dotted;
@@ -20,15 +86,53 @@
 .select-difficulty {
   border-radius: 15px;
   font-family: monospace;
+  font-size: 100%;
+  text-align: center;
+  color: slategray;
 }
 
 .select-catagory {
   border-radius: 15px;
   font-family: monospace;
+  width: 20%;
+  font-size: 100%;
+  text-align: center;
+  color: slategray;
+}
+
+@media (max-width: 750px) {
+  .select-catagory {
+    width: 25%;
+  }
+}
+
+@media (max-width: 600px) {
+  .select-catagory {
+    width: 30%;
+  }
+}
+
+@media (max-width: 500px) {
+  .select-catagory {
+    width: 35%;
+  }
+}
+
+@media (max-width: 450px) {
+  .select-catagory {
+    width: 40%;
+  }
+}
+
+@media (max-width: 400px) {
+  .select-catagory {
+    width: 45%;
+  }
 }
 
 .label-difficulty {
   padding-right: 0.5em;
+  font-size: 150%;
 }
 
 .label-catagory {
@@ -36,10 +140,39 @@
   padding-right: 0.5em;
   border-left: solid;
   margin-left: 0.5em;
+  font-size: 150%;
 }
 
 .parameter_selection {
   width: 80%;
   margin: auto;
+}
+
+.tiny-parrot {
+  width: 15%;
+}
+
+@media (max-width: 720px) {
+  .title-parrot {
+    width: 100%;
+  }
+}
+
+@media (max-width: 680px) {
+  .title-parrot {
+    width: 95%;
+  }
+}
+
+@media (max-width: 640px) {
+  .title-parrot {
+    width: 90%;
+  }
+}
+
+@media (max-width: 500px) {
+  .title-parrot {
+    width: 85%;
+  }
 }
 /*# sourceMappingURL=compleaderboard.css.map */

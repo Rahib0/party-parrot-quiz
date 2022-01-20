@@ -1,0 +1,57 @@
+.join-game {
+  background: #f0efef;
+  font-family: monospace, sans-serif;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: lightslategray;
+  text-align: center;
+}
+
+.join-game h1 {
+  font-size: 500%;
+  text-decoration: underline;
+}
+
+@media (max-width: 720px) {
+  .join-game h1 {
+    font-size: 450%;
+  }
+}
+
+@media (max-width: 680px) {
+  .join-game h1 {
+    font-size: 400%;
+  }
+}
+
+@media (max-width: 640px) {
+  .join-game h1 {
+    font-size: 350%;
+  }
+}
+
+@media (max-width: 500px) {
+  .join-game h1 {
+    font-size: 300%;
+  }
+}
+
+@media (max-width: 600px) {
+  .join-game .title-parrot {
+    display: none;
+  }
+  .join-game .phone {
+    width: 90%;
+  }
+}
+
+@media (max-width: 500px) {
+  .join-game .title-parrot {
+    display: none;
+  }
+  .join-game .phone {
+    width: 80%;
+  }
+}
+/*# sourceMappingURL=joingame.css.map */

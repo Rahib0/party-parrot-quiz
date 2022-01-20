@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Categories, QuestionCount } from '..'
-import '../../Styles/createGame/createform.css'
+import '../../Styles/createGame/createform.css';
+
 
 
 export default function FormCreateGame() {
@@ -48,6 +49,7 @@ export default function FormCreateGame() {
                     
                 </div>
             </form>
+
         </div>
     )
 }
