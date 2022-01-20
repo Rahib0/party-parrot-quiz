@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Categories, QuestionCount } from '..'
+import '../../Styles/createGame/createform.css';
 import { v4 as uuidv4 } from 'uuid'
 import { io } from 'socket.io-client'
 import { useSelector, useDispatch } from 'react-redux'
@@ -58,7 +59,6 @@ export default function FormCreateGame() {
         <div>
             {console.log("input is: ", input)}
             <form onSubmit={handleSubmit}>
-
                 <div>
                     <QuestionCount input={input} setInput={setInput}/>
                 </div>
@@ -68,8 +68,8 @@ export default function FormCreateGame() {
                 </div>
 
                 <div>
-                    <label htmlFor="difficulty">Difficulty</label>
-                    <select name='difficulty' onChange={(e) => {setInput({ ...input, difficulty: e.target.value })}}>
+                    <label className='diff-label' htmlFor="difficulty">Difficulty:</label>
+                    <select className='diff-select' name='difficulty' onChange={(e) => {setInput({ ...input, difficulty: e.target.value })}}>
                         <option value="easy">Easy</option>
                         <option value="medium">Medium</option>
                         <option value="hard">Hard</option>
@@ -77,10 +77,11 @@ export default function FormCreateGame() {
                 </div>
 
                 <div>
-                    <input type="submit" value='Create Game'/>
+                    <input className='create-btn' type="submit" value='Create Game'/>
                     
                 </div>
             </form>
+
         </div>
     )
 }

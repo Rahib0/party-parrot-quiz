@@ -1,0 +1,67 @@
+@import '../Variables/variables.scss';
+
+
+    .homepage{
+        background: $greyColor;
+        font-family: monospace, sans-serif;
+        align-items: center;
+        color: lightslategray;
+        text-align: center;
+
+        @media (min-width: 600px){
+            .phone{
+                display: none;
+            }
+        }
+
+        .title{
+            font-size: 500%;
+            text-decoration: underline;
+
+            @media (max-width: 600px){
+                font-size: 250%;
+            }
+        }
+
+        button{
+            font-family: monospace, sans-serif;
+            border-radius: 8px;
+            margin: 10px;
+            font-size: 20px;
+        }
+
+        table {
+            box-sizing: border-box;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        table img {
+            max-width: 80px;
+            min-width: 10px;
+        }
+
+        @media (max-width: 600px){
+            table img{
+                display: none;
+            }
+            .phone{
+                width: 70%;
+            }
+
+            h2{
+                font-size: 100%;
+            }
+
+            #leader-btn{
+                margin-bottom: 15%;
+            }
+
+            
+        }
+
+        
+    }
+
+
+

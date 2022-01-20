@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import '../../Styles/leaderboard/compleaderboard.css';
+import { p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21, p22, p23, p24, p25, p26, p27, p28, p29, p30 } from '../../Styles/manyparrots';
+
 
 export default function LeaderBoard() {
     const [ parameters, setParameters ] = useState({ difficulty: "easy", category: 0 })
@@ -30,29 +33,38 @@ export default function LeaderBoard() {
     // }, [parameters])
 
     return (
-        <>
-            <div id='parameter_selection'>
-                <label htmlFor="difficulty">Difficulty</label>
-                <select name="difficulty" id="difficulty" value={parameters.difficulty} onChange={handleChange}>
+        <div className='leadercomp'>
+            <table>
+                <td><img className='title-parrot' src={p26} alt='party-parrot' /></td>
+                <td>
+                    <h1>Leaderboards</h1>
+                </td>
+                <td><img className='title-parrot' src={p27} alt='party-parrot' /></td>
+            </table>
+
+            <div className='parameter_selection'>
+                <label className='label-difficulty' htmlFor="difficulty">Difficulty</label>
+                <select className='select-difficulty' name="difficulty" id="difficulty" value={parameters.difficulty} onChange={handleChange}>
                     <option value="easy">Easy</option>
                     <option value="medium">Medium</option>
                     <option value="hard">Hard</option>
                 </select>
 
-                <label htmlFor="category">Category</label>
-                <select name='category' id='category' value={parameters.category} onChange={handleChange}>
+                <label className='label-catagory' htmlFor="category">Category</label>
+                <select className='select-catagory' name='category' id='category' value={parameters.category} onChange={handleChange}>
                     {categoriesArray.map((topic, n) => <option key={n} value={topic.id}>{topic.name}</option>)}
                 </select>
             </div>
-            <h1>Leaderboards</h1>
+            
             <h2>{categoriesArray.find(topic => topic.id == parameters.category).name} - {parameters.difficulty.charAt(0).toUpperCase() + parameters.difficulty.slice(1)}</h2>
             
-            <ol className='leaderboard'>
+            <ol className='top-scores'>
                 {playersArray.map((player, i) => <li key={i}>
-                    <div className='player_name'>{player.name}</div>
-                    <div className='player_score'>{player.score} points</div>
+
+                    <div className='player_name'>{player.name}: {player.score} points <img className='tiny-parrot' src={p28} alt='party-parrot' /></div>
+                    {/* <span><div className='player_score'>{player.score} points</div></span> */}
                 </li>)}
             </ol>
-        </>
+        </div>
     )
 }

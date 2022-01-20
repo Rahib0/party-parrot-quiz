@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 //import {useRanger} from 'react-ranger';
 //import styled, { createGlobalStyle } from 'styled-components';
+import '../../Styles/createGame/compQuestionCount/compquestion.css'
 
 
 
@@ -63,11 +64,16 @@ export default function QuestionCount({ input, setInput }) {
 
     return (
         <div>
-            <label>No. of Questions:</label>
-            <input type='number' id='amount' value={count} onChange={handleOnChange}  min='1' max={maxCount} />
+
+
+            <div className='q-div-border'><p></p></div>
+
+            <label className='q-label'>No. of Questions:</label>
+            <input className='q-input' type='number' id='amount' value={count} onChange={handleOnChange}  min='1' max={maxCount} />
             
             <br></br>
-            <p>The maximum number of questions is: {maxCount}</p> 
+            <p className='q-p'>The maximum number of questions is: {maxCount}</p> 
+            <div className='q-div-border'><p></p></div>
         </div>
     )
 }

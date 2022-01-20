@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { io } from 'socket.io-client'
+import '../../Styles/joinGame/joingameform.css';
 
 export default function FormJoinGame() {
     const [ input, setInput ] = useState({ roomId: "" })
@@ -18,9 +19,12 @@ export default function FormJoinGame() {
     return (
         <form onSubmit={handleSubmit}>
             {console.log(input)}
-            <label htmlFor='roomId'>Enter Room ID</label>
-            <input type='text' name='roomId' value={input.roomId} onChange={(e) => {setInput({ ...input, roomId:e.target.value })}} placeholder='' />
-            <input type="submit" value='Join Game'/>
+            <div className='dotted-line'><p></p></div>
+            <label className='room-label' htmlFor='roomId'>Enter Room ID:</label>
+            <input className='room-input' type='text' name='roomId' value={input.roomId} onChange={(e) => {setInput({ ...input, roomId: e.target.value })}} placeholder='' />
+            <br></br>
+            <div className='dotted-line'><p></p></div>
+            <input className='submit-btn' type="submit" value='Join Game'/>
         </form>
     )
 } 
