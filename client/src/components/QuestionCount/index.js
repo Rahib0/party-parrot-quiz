@@ -54,29 +54,19 @@ export default function QuestionCount({ input, setInput }) {
     }, [ maxCount ])
 
     function handleOnChange (e) {
-        // if (e.target.value < 0) {
-        //     setCount(1)
-        // } else {
-        //     setCount(e.target.value)
-        // }
+        console.log(maxCount)
         console.log(e.target.value)
         if(e.target.value > maxCount){
             alert('There is not enough questions in this category. Please reduce the number of questions or select a different category!')
         } else {
-        setInput({ ...input, questions: count })}
+            setCount(e.target.value)}
     }
-
-
-
-
-
-
 
     return (
         <div>
 
 
-<div className='q-div-border'><p></p></div>
+            <div className='q-div-border'><p></p></div>
 
             <label className='q-label'>No. of Questions:</label>
             <input className='q-input' type='number' id='amount' value={count} onChange={handleOnChange}  min='1' max={maxCount} />

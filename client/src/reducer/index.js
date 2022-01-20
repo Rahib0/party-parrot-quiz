@@ -1,4 +1,4 @@
-const initState = {players: [], answers: []}
+const initState = {  lobbyId: "", myScore: 0, myAnswers: [], players: [], currentQuestionNumber: 1, name: "Guest"}
 
 const gameReducer = (state = initState, action) => {
     switch (action.type){
@@ -7,10 +7,41 @@ const gameReducer = (state = initState, action) => {
                 ...state, 
                 socket: action.payload
             })
-        case 'ADD_PLAYER':
+        case "CHANGE_NAME":
+            return ({
+                ...state,
+                name: action.payload
+            })
+        
+        case 'CREATE_LOBBY':
+            console.log(action.payload)
+            console.log(action.payload.lobbyId)
+            console.log(action.payload.name)
+            return ({
+                ...state,
+                name: action.payload.name,
+                lobbyId: action.payload.lobbyId
+            })
+        
+        case 'UPDATE_GAME_STATE':
+            console.log("starting game")
+            return({
+                ...state,
+                gameState: action.payload
+            })
+        
+        case 'LOAD_QUESTION':
+            console.log("loading the question!")
+            return({
+                ...state,
+                question: action.payload.question,
+                answers: action.payload.possibleAnswers
+            })
+        
+        case 'UPDATE_PLAYER_LIST':
             return ({
                     ...state, 
-                    players: action.payload.map(player => ({player: player, ready:false}))
+                    players: action.payload
             })
 
         case 'PLAYER_READY':
@@ -25,24 +56,16 @@ const gameReducer = (state = initState, action) => {
                  player: player
             })
         
-        case 'PLAYER_NOT_READY':
-            const notReady = [...state.players.map(player => ({ player: player.player, userReady: false}))]
-            return ({
-                ...state, 
-                player: notReady
-            })
-
-
-        case 'LOAD_QUESTIONS':
+        case 'LOAD_QUESTIONSLIST':
             return ({
                 ...state,
-                questions:[...action.payload],
+                questionsList:[...action.payload],
               }) 
         
         case 'ADD_ANSWER':
             return ({
                 ...state,
-                answers: state.answers.concat([action.payload])
+                myAnswers: [ ...state.myAnswers, action.payload ]
         })
 
         case 'SET_ERROR':
