@@ -25,13 +25,6 @@
   }
 }
 
-.homepage button {
-  font-family: monospace, sans-serif;
-  border-radius: 8px;
-  margin: 10px;
-  font-size: 20px;
-}
-
 .homepage table {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -57,5 +50,29 @@
   .homepage #leader-btn {
     margin-bottom: 15%;
   }
+}
+
+button {
+  font-family: monospace, sans-serif;
+  border-radius: 8px;
+  margin: 10px;
+  font-size: 20px;
+  -webkit-transition: -webkit-box-shadow .15s,-webkit-transform .15s;
+  transition: -webkit-box-shadow .15s,-webkit-transform .15s;
+  transition: box-shadow .15s,transform .15s;
+  transition: box-shadow .15s,transform .15s,-webkit-box-shadow .15s,-webkit-transform .15s;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  will-change: box-shadow,transform;
+}
+
+button:hover {
+  background-color: slategray;
+  color: white;
+}
+
+button:active {
+  background-color: slategray;
+  color: #47525c;
 }
 /*# sourceMappingURL=homepage.css.map */

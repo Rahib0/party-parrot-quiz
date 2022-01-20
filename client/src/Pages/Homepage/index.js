@@ -38,7 +38,7 @@ export default function Homepage() {
                         <td>
                             <tr>
                                 <div id='create-btn'>
-                                    <a href='/create' className='create-game-btn'><button>Create Game</button></a>
+                                    <a href='/create' ><button className='create-game-btn'>Create Game</button></a>
                                 </div>
                             </tr>
                             <tr>

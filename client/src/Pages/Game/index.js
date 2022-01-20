@@ -3,7 +3,9 @@ import { useParams } from 'react-router-dom'
 import { io } from 'socket.io-client'
 import { useSelector, useDispatch } from 'react-redux'
 import { addSocket, changeName, updatePlayer, changeGameState, loadQuestion, storeAnswer, storeQuestionsList } from '../../actions'
-import { Back } from '../../components'
+import { Back } from '../../components';
+import '../../Styles/Game/game.css';
+import { p1 } from '../../Styles/manyparrots';
 
 export default function Game() {
     const { lobbyid: lobbyId } = useParams()
@@ -98,21 +100,44 @@ export default function Game() {
     }
 
     return (
-        <>
+        <div className='game'>
             {(!state.gameState) ? 
             <>
-                <h1>Waiting Area</h1>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><img className='title-parrot' src={p1} alt='party-parrot' /></td>
+                            <td><h1 className='wait-title'>Waiting Area</h1></td>
+                            <td><img className='title-parrot' src={p1} alt='party-parrot' /></td>
+                        </tr>
+                    </tbody>
+                </table>
                 <form onSubmit={handleSubmit}>
-                    <input required type='text' value={changeNameVar} onChange={(e) => {setChangeNameVar(e.target.value)}} placeholder='enter name' />
-                    <input type="submit" value="Change Name" />
+                    <input className='wait-name' required type='text' value={changeNameVar} onChange={(e) => {setChangeNameVar(e.target.value)}} placeholder='enter name' />
+                    <input className='name-button' type="submit" value="Change Name" />
                 </form>
-                <h3>{`Game Id - ${lobbyId}`}</h3>
-                <ul>
-                    {state.players.map((player, n) => <li key={n}>{player.name} - {player.ready ? "Ready" : "Not Ready"}</li>)}
+                <h3 className='game-id'>{`Game Id - ${lobbyId}`}</h3>
+                <ul className='wait-list'>
+                    {state.players.map((player, n) => <li key={n}>{player.name} - {player.ready ? "Ready" : "Not Ready"}
+                    <img className='wait-list-parrot' src={p1} alt='party-parrot' /></li>)}
                 </ul>
+                <h3>The Parrots are waiting!!</h3>
 
                 <button className={`butt${rdy}`} onClick={handleReady}>Ready Up</button>
                 <button className={`butt${rdy}`} onClick={() => dispatch(changeGameState(1))}>start game dev</button>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><img className='wait-parrot-1' src={p1} alt='party-parrot' /></td>
+                            <td><img className='wait-parrot-2' src={p1} alt='party-parrot' /></td>
+                            <td><img className='wait-parrot-3' src={p1} alt='party-parrot' /></td>
+                            <td><img className='wait-parrot-phone' src={p1} alt='party-parrot' /></td>
+                            <td><img className='wait-parrot-3' src={p1} alt='party-parrot' /></td>
+                            <td><img className='wait-parrot-2' src={p1} alt='party-parrot' /></td>
+                            <td><img className='wait-parrot-1' src={p1} alt='party-parrot' /></td>
+                        </tr>
+                    </tbody>
+                </table>
             </> :
             (state.gameState === 1) ?
             <>
@@ -148,6 +173,6 @@ export default function Game() {
             </>
             }
                 
-        </>
+        </div>
     )
 }

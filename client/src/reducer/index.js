@@ -44,17 +44,17 @@ const gameReducer = (state = initState, action) => {
                     players: action.payload
             })
 
-        case 'PLAYER_READY':
-            const toggle = state.players.find(p => p.player.id === action.payload)
-            const readyPlayer = [
-                ...state.players.slice(0, state.players.indexOf(toggle)),
-                { ...toggle, userReady: !toggle.userReady},
-                ...state.players.slice(state.players.indexOf(toggle) + 1)
-            ]
-            return ({
-                 ...state, 
-                 player: player
-            })
+        // case 'PLAYER_READY':
+        //     const toggle = state.players.find(p => p.player.id === action.payload)
+        //     const readyPlayer = [
+        //         ...state.players.slice(0, state.players.indexOf(toggle)),
+        //         { ...toggle, userReady: !toggle.userReady},
+        //         ...state.players.slice(state.players.indexOf(toggle) + 1)
+        //     ]
+        //     return ({
+        //          ...state, 
+        //          player: player
+        //     })
         
         case 'LOAD_QUESTIONSLIST':
             return ({
