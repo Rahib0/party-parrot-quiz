@@ -1,11 +1,11 @@
 services:
-  api:
+  server:
     container_name: dev_api
     ports: 
       - 3000:3000
     environment: 
-      - DB_NAME=db
-      - DB_CONNECTION=mongodb://user:password@db:27017
+      - DB_NAME=games
+      - DB_CONNECTION=mongodb://user:password@games
       - NODE_ENV=development
     depends_on:
       - db
