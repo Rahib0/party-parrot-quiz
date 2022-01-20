@@ -9,11 +9,13 @@ export default function CreateGame() {
         <div className='create-game'>
             <table>
                 <tbody>
-                    <td><img src={p22} alt='party-parrot' /></td>                    
-                    <td>            
-                        <h1>Create your Game</h1>
-                    </td>
-                    <td><img src={p23} alt='party-parrot' /></td>
+                    <tr>
+                        <td><img src={p22} alt='party-parrot' /></td>                    
+                        <td>            
+                            <h1>Create your Game</h1>
+                        </td>
+                        <td><img src={p23} alt='party-parrot' /></td>
+                    </tr>
                 </tbody>
             </table>
             <FormCreateGame />
