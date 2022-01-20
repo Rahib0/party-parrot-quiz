@@ -31,6 +31,12 @@ export default function Game() {
                 dispatch(loadQuestion(firstQuestion))
                 dispatch(changeGameState(1))
                 console.log(firstQuestion)
+                s.on('next-question', nextQuestion => {
+                    console.log("OMG ANOTHER QUESTION?!?")
+                    console.log(nextQuestion)
+                    setPlayerSelectOption("")
+                    dispatch(loadQuestion(nextQuestion))
+                })
                 
 
             })
@@ -77,7 +83,11 @@ export default function Game() {
 
     function handleFinalAnswer(e) {
         console.log(playerSelectOption)
-        dispatch(storeAnswer(playerSelectOption))
+        if (!playerSelectOption) {return}
+        socket.emit('submit-answer', lobbyId, playerSelectOption, () => {
+            console.log("server has recieved msg")
+            dispatch(storeAnswer(playerSelectOption))
+        })
     }
 
     return (

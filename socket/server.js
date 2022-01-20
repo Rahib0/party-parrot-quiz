@@ -10,7 +10,7 @@ let gamesArray = []
 
 function addPlayer(lobbyId, name, socketId) {
     const game = gamesArray.find(game => game.lobbyId == lobbyId)
-    game.players.push({ name, socketId, ready: false })
+    game.players.push({ name, socketId, ready: false, score: 0 })
     console.log("new array: ", gamesArray)
     console.log(game.players)
 }
@@ -83,9 +83,10 @@ function togglePlayerReady(lobbyId, socketId, ready=true) {
 }
 
 function readyCheck(aGame){
+    console.log("CHECKING IF EVERYONE HAS READIED UP IN GAME")
     let readyPlayerAmount = 0
     for(let i = 0; i<aGame.players.length ;i++){
-        if( aGame.players[i].ready = true){
+        if( aGame.players[i].ready == true){
             readyPlayerAmount++;
         }
     }
@@ -104,7 +105,7 @@ function readyCheck(aGame){
 io.on('connection', socket => {
     socket.on('create-room', (lobbyId, input, cb) => {
         socket.join(lobbyId)
-        gamesArray.push({ lobbyId, players: [ ], totalQuestions: input.questions, category: input.topic, difficulty: input.difficulty })
+        gamesArray.push({ lobbyId, players: [ ], totalQuestions: input.questions, currentQuestion: 0, answerHolder: [], category: input.topic, difficulty: input.difficulty })
         cb()
     })
 
@@ -136,15 +137,21 @@ io.on('connection', socket => {
     })
 
     socket.on('ready-up', (lobbyId, cb) => {
+        console.log(`${socket.id} HAS READIED UP`)
         togglePlayerReady(lobbyId, socket.id)
         io.in(lobbyId).emit('update-player-lobby', playerArray(lobbyId))
         cb()
         let game = gamesArray.find(game => game.lobbyId == lobbyId)
+        let index = gamesArray.findIndex(game => game.lobbyId == lobbyId)
+        console.log(readyCheck(game))
         if (readyCheck(game)) {
+            console.log("EVERYONE HAS READIED UP")
             axios.get(`https://opentdb.com/api.php?amount=${game.totalQuestions}&category=${game.category}&difficulty=${game.difficulty}&type=multiple`)
             .then(res => {
                 // console.log(res.data.results)
                 game = { ...game, questionsHolder: res.data.results }
+                gamesArray[index] = game
+                console.log(game)
                 console.log(game.questionsHolder[0])
                 const q = game.questionsHolder[0]
                 loadedQuestion = { question: q.question, possibleAnswers: q.incorrect_answers.concat([q.correct_answer]).sort(() => Math.random() - 0.5) }
@@ -163,6 +170,45 @@ io.on('connection', socket => {
         togglePlayerReady(lobbyId, socket.id, false)
         io.in(lobbyId).emit('update-player-lobby', playerArray(lobbyId))
         cb()
+    })
+
+    socket.on('submit-answer', (lobbyId, answer, cb) => {
+        let game = gamesArray.find(game => game.lobbyId == lobbyId)
+        game.answerHolder.push({ socketId: socket.id, answer: answer })
+        cb()
+        if (game.answerHolder.length === game.players.length) {
+            console.log("ALL ANSWERS SUBMITTED")
+            game.answerHolder.forEach(submit => {
+                // console.log(game)
+                // console.log(game.questionsHolder)
+                // console.log(game.currentQuestion)
+                if (submit.answer == game.questionsHolder[game.currentQuestion].correct_answer) {
+                    let player = game.players.find(player => player.socketId == submit.socketId)
+                    let score = player.score + 10
+                    player = { ...player, score }
+                    console.log(player)
+                    let index = game.players.findIndex(player => player.socketId == submit.socketId)
+                    game.players[index] = player
+                }
+            })
+            console.log(game.players)
+            // console.log(game.currentQuestion)
+            io.in(lobbyId).emit('update-player-lobby', playerArray(lobbyId))
+            game.answerHolder = []
+            game.currentQuestion = game.currentQuestion + 1
+            if (game.currentQuestion == (game.totalQuestions)) {
+                console.log("GAME IS STOPPING")
+                io.in(lobbyId).emit('game-summary', game.questionsHolder)
+            } else {
+                console.log('NEXT QUESTION!')
+                // console.log(game.questionsHolder[game.currentQuestion])
+                const q = game.questionsHolder[game.currentQuestion]
+                loadedQuestion = { question: q.question, possibleAnswers: q.incorrect_answers.concat([q.correct_answer]).sort(() => Math.random() - 0.5) }
+                // console.log(loadedQuestion)
+                io.in(lobbyId).emit('next-question', loadedQuestion)
+            }
+        }
+
     })
 
 })
