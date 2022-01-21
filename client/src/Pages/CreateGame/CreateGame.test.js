@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Create from './index';
+import { FormCreateGame } from '../../components'
 
 describe('Create', () => {
   beforeEach(() => {
