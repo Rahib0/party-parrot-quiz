@@ -16,7 +16,8 @@ router.get('/', async (req, res) => {
 
 router.get('/scores', async(req,res)=>{
     try {
-        const scores= await Game.scores
+        //const scores= await Game.scores
+        const scores= await Game.totalScores
         res.status(200).json({scores})
     } catch (err) {
         console.log(err)
