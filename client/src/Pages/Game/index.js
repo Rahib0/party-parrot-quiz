@@ -142,34 +142,70 @@ export default function Game() {
             (state.gameState === 1) ?
             <>
                 {console.log(state.gameState)}
-                <h1>GAME STARTED</h1>
-                <p className='question'>{state.question}</p>
-                <p>{playerSelectOption && `${playerSelectOption} has been picked`}</p>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><img className='wait-parrot-1' src={p1} alt='party-parrot' /></td>
+                            <td><h1 className='game-title'>THE PARTY HAS STARTED</h1></td>
+                            <td><img className='wait-parrot-1' src={p1} alt='party-parrot' /></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3 className='question'>{state.question}</h3>
+                <div className='q-dotted'><p></p></div>
+                <p className='selected'>{playerSelectOption && `${playerSelectOption} has been picked`}</p>
                 <div>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><button className='answer' onClick={handlePickAnswer} value={state.answers[0]}> {state.answers[0]}</button><img className='answer-parrot' src={p1} alt='party-parrot' /></td>
+                                <td><button className='answer' onClick={handlePickAnswer} value={state.answers[1]} > {state.answers[1]} </button><img className='answer-parrot' src={p1} alt='party-parrot' /></td>
+                            </tr>
+                            <tr>
+                                <td><button className='answer' onClick={handlePickAnswer} value={state.answers[2]} > {state.answers[2]} </button><img className='answer-parrot' src={p1} alt='party-parrot' /></td>
+                                <td><button className='answer' onClick={handlePickAnswer} value={state.answers[3]} > {state.answers[3]} </button><img className='answer-parrot' src={p1} alt='party-parrot' /></td>
+                            </tr>
+                        </tbody>
+                    </table>
                     
-                    <button onClick={handlePickAnswer} value={state.answers[0]}>{state.answers[0]}</button>
-                    <button onClick={handlePickAnswer} value={state.answers[1]} > {state.answers[1]}</button>
-                    <button onClick={handlePickAnswer} value={state.answers[2]} >{state.answers[2]}</button>
-                    <button onClick={handlePickAnswer} value={state.answers[3]} >{state.answers[3]}</button>
+                    <div className='q-dotted'><p></p></div>
+                    
+                    
                 </div>
-                <button onClick={handleFinalAnswer} >FINALIZE</button>
+                <button className='sbmt-answr' onClick={handleFinalAnswer} >FINALIZE</button>
                 <button className={`butt${rdy}`} onClick={() => dispatch(changeGameState(2))}>start game dev</button>
                 
             </> :
             <>
-                <Back />
+                
                 {console.log(state.gameState)}
-                <h1>Game Summary</h1>
-                <ul>
-                    {state.players.map((player, n) => <li key={n}>{player.name} - {player.score} pts</li>)}
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><img className='summary-parrot' src={p1} alt='party-parrot' /></td>
+                            <td><h1 className='summary-title'>Game Summary</h1></td>
+                            <td><img className='summary-parrot' src={p1} alt='party-parrot' /></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <ul className='player-result-table'>
+                    {state.players.map((player, n) => <li key={n}>{player.name} - {player.score} pts <img className='result-parrot' src={p1} alt='party-parrot' /></li>)}
+                    
                 </ul>
-                <ol>
+                <div className='q-dotted'><p></p></div>
+                <br></br>
+                <ol className='answer-table'>
                     {state.questionsList && state.questionsList.map((question, n) => <li key={n}>
                         <span>{question.question}</span>
                         <p>{question.correct_answer}</p>
                         <p>You Answered: {state.myAnswers[n]}</p>
                     </li>)}
                 </ol>
+                <div className='q-dotted'><p></p></div>
+                <br></br>
+                <img className='summary-phone-parrot' src={p1} alt='party-parrot' />
+                <br></br>
+                <Back />
             </>
             }
                 
