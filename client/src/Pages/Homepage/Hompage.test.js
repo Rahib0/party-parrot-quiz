@@ -6,7 +6,7 @@ describe('Homepage', () => {
     render(<Homepage/>)
   })
 
-  test('it displays the planets', () => {
+  test('it displays the parrots', () => {
     expect(screen.getByRole('img', {name: 'Party Parrot' })).toBeInTheDocument();
   })
 
