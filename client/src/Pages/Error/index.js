@@ -11,7 +11,7 @@ export default function ErrorPage() {
         console.log(socket)
     })
     // useEffect(() => {
-        // const s = io('http://localhost:3001')
+        // const s = io('http://localhost:5001')
         // console.log(s)
 
         // s.on('connect', () => {

@@ -7,7 +7,7 @@ export default function FormJoinGame() {
 
     function handleSubmit (e) {
         e.preventDefault()
-        const s = io('http://localhost:3001')
+        const s = io('http://localhost:5001')
         s.on('connect', () => {
             console.log(`connected with ID: ${s.id}`)
             s.emit('create-room', input.roomId, input, () => {
