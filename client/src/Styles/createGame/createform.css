@@ -107,5 +107,22 @@
   font-family: monospace;
   font-size: 250%;
   color: #606e7c;
+  -webkit-transition: -webkit-box-shadow .15s,-webkit-transform .15s;
+  transition: -webkit-box-shadow .15s,-webkit-transform .15s;
+  transition: box-shadow .15s,transform .15s;
+  transition: box-shadow .15s,transform .15s,-webkit-box-shadow .15s,-webkit-transform .15s;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  will-change: box-shadow,transform;
+}
+
+.create-btn:hover {
+  background-color: slategray;
+  color: white;
+}
+
+.create-btn:active {
+  background-color: slategray;
+  color: #47525c;
 }
 /*# sourceMappingURL=createform.css.map */

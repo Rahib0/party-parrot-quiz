@@ -52,7 +52,12 @@ const gameReducer = (state = initState, action) => {
         //         ...state.players.slice(state.players.indexOf(toggle) + 1)
         //     ]
         //     return ({
+<<<<<<< HEAD
         //          ...state
+=======
+        //          ...state, 
+        //          player: player
+>>>>>>> df7fe0b33376dcfdf9a56974c682349f61c4b25e
         //     })
         
         case 'LOAD_QUESTIONSLIST':

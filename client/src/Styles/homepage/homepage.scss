@@ -23,12 +23,6 @@
             }
         }
 
-        button{
-            font-family: monospace, sans-serif;
-            border-radius: 8px;
-            margin: 10px;
-            font-size: 20px;
-        }
 
         table {
             box-sizing: border-box;
@@ -61,6 +55,27 @@
         }
 
         
+    }
+
+    button{
+        font-family: monospace, sans-serif;
+        border-radius: 8px;
+        margin: 10px;
+        font-size: 20px;
+        transition: box-shadow .15s,transform .15s;
+        touch-action: manipulation;
+        will-change: box-shadow,transform;
+
+    }
+
+    button:hover{
+        background-color: slategray;
+        color: white;
+    }
+
+    button:active{
+        background-color: slategray;
+        color: rgb(71, 82, 92);
     }
 
 

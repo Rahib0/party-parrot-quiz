@@ -24,7 +24,7 @@ export default function FormJoinGame() {
             <input className='room-input' type='text' name='roomId' value={input.roomId} onChange={(e) => {setInput({ ...input, roomId: e.target.value })}} placeholder='' />
             <br></br>
             <div className='dotted-line'><p></p></div>
-            <input className='submit-btn' type="submit" value='Join Game'/>
+            <input className='join-btn' type="submit" value='Join Game'/>
         </form>
     )
 } 
