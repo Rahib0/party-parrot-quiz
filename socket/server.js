@@ -1,8 +1,10 @@
 const axios = require('axios')
+const httpServer = require("http").createServer();
 
-const io = require("socket.io")(3001, {
+const io = require('socket.io')(httpServer, {
     cors: {
-        origin: ['http://localhost:3000']
+        origin: "*",
+        methods: ["GET", "POST"]
     }
 })
 
@@ -233,3 +235,6 @@ io.on('connection', socket => {
 //         cb(`joined ${room}`)
 //     })
 // })
+
+
+module.exports = httpServer;

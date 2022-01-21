@@ -1,5 +1,5 @@
-const gameServer = require('./server');
+const server = require('./server');
 
 const port = process.env.PORT || 5001;
 
-gameServer.listen(port, () => console.log(`Game now being served from port ${port}!`));
+server.listen(port, () => console.log(`The socket.io server is running on port: ${port}!`));

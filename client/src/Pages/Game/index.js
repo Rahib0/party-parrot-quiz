@@ -20,7 +20,7 @@ export default function Game() {
     const dispatch = useDispatch()
     
     useEffect(() => {
-        const s = io('http://localhost:3001')
+        const s = io('http://localhost:5001')
         s.on('connect', () => {
             s.emit('join-lobby', lobbyId, name )
             dispatch(addSocket(s))

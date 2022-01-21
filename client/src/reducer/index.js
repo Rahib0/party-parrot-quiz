@@ -52,8 +52,7 @@ const gameReducer = (state = initState, action) => {
         //         ...state.players.slice(state.players.indexOf(toggle) + 1)
         //     ]
         //     return ({
-        //          ...state, 
-        //          player: player
+        //          ...state
         //     })
         
         case 'LOAD_QUESTIONSLIST':
