@@ -94,7 +94,9 @@
 .select-catagory {
   border-radius: 15px;
   font-family: 'Courier New', Courier, monospace;
-  width: 20%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   font-size: 100%;
   text-align: center;
   color: slategray;
