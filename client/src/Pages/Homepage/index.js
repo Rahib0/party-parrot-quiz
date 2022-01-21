@@ -34,25 +34,29 @@ export default function Homepage() {
             <div>
                 <table>
                     <tbody>
-                        <td><img className='parrot-btn' src={p12} alt='Party Parrot'/></td>
-                        <td>
-                            <tr>
-                                <div id='create-btn'>
-                                    <a href='/create' ><button className='create-game-btn'>Create Game</button></a>
-                                </div>
-                            </tr>
-                            <tr>
-                                <div id='join-btn'>
-                                    <a href='/join'><button>Join Game</button></a> 
-                                </div>
-                            </tr>
-                            <tr>
-                                <div id='leader-btn'>
-                                    <a href='/leaderboards'><button>Leaderboards</button></a>
-                                </div>
-                            </tr>
-                        </td>
-                        <td><img className='parrot-btn' src={p13} alt='Party Parrot'/></td>
+                        <tr>
+                            <td><img className='parrot-btn' src={p12} alt='Party Parrot'/></td>
+                        
+                            <td>
+                                <tr>
+                                    <div id='create-btn'>
+                                        <a href='/create' ><button className='create-game-btn'>Create Game</button></a>
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div id='join-btn'>
+                                        <a href='/join'><button>Join Game</button></a> 
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div id='leader-btn'>
+                                        <a href='/leaderboards'><button>Leaderboards</button></a>
+                                    </div>
+                                </tr>
+                            </td>
+                        
+                            <td><img className='parrot-btn' src={p13} alt='Party Parrot'/></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
