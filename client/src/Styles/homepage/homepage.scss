@@ -1,9 +1,12 @@
 @import '../Variables/variables.scss';
 
+    body {
+        background: $greyColor;
+    }
 
     .homepage{
         background: $greyColor;
-        font-family: monospace, sans-serif;
+        font-family: 'Courier New', Courier, monospace;
         align-items: center;
         color: lightslategray;
         text-align: center;
@@ -58,7 +61,7 @@
     }
 
     button{
-        font-family: monospace, sans-serif;
+        font-family: 'Courier New', Courier, monospace;
         border-radius: 8px;
         margin: 10px;
         font-size: 20px;
