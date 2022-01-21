@@ -85,7 +85,7 @@
 
 .select-difficulty {
   border-radius: 15px;
-  font-family: monospace;
+  font-family: 'Courier New', Courier, monospace;
   font-size: 100%;
   text-align: center;
   color: slategray;
@@ -93,7 +93,7 @@
 
 .select-catagory {
   border-radius: 15px;
-  font-family: monospace;
+  font-family: 'Courier New', Courier, monospace;
   width: 20%;
   font-size: 100%;
   text-align: center;

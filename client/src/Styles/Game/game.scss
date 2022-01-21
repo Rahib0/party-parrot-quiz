@@ -2,7 +2,7 @@
 
 .game{
     background: $greyColor;
-        font-family: monospace, sans-serif;
+        font-family: 'Courier New', Courier, monospace;
         align-items: center;
         color: lightslategray;
         text-align: center;
@@ -54,7 +54,7 @@
 }
 
 .wait-name{
-    font-family: monospace;
+    font-family: 'Courier New', Courier, monospace;
     border-radius: 10px;
     text-align: center;
     width: 25%;
@@ -63,7 +63,7 @@
 }
 
 .name-button{
-    font-family: monospace;
+    font-family: 'Courier New', Courier, monospace;
     border-radius: 10px;
     font-size: 175%;
     transition: box-shadow .15s,transform .15s;
@@ -226,6 +226,3 @@
         width: 90%;
     }
 }
-
-
-

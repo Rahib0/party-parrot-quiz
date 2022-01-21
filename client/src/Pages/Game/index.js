@@ -124,7 +124,6 @@ export default function Game() {
                 <h3>The Parrots are waiting!!</h3>
 
                 <button className={`butt${rdy}`} onClick={handleReady}>Ready Up</button>
-                <button className={`butt${rdy}`} onClick={() => dispatch(changeGameState(1))}>start game dev</button>
                 <table>
                     <tbody>
                         <tr>
@@ -173,7 +172,6 @@ export default function Game() {
                     
                 </div>
                 <button className='sbmt-answr' onClick={handleFinalAnswer} >FINALIZE</button>
-                <button className={`butt${rdy}`} onClick={() => dispatch(changeGameState(2))}>start game dev</button>
                 
             </> :
             <>
