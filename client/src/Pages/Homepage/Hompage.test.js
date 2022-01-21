@@ -5,10 +5,6 @@ describe('Homepage', () => {
   beforeEach(() => {
     render(<Homepage/>)
   })
-  
-  test('it displays logo as the title', () => {
-    expect(screen.getByRole('img', {name: 'Trivia Duck' })).toBeInTheDocument();
-  })
 
   test('it displays the planets', () => {
     expect(screen.getByRole('img', {name: 'Party Parrot' })).toBeInTheDocument();
