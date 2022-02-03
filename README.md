@@ -16,6 +16,7 @@ Do you dare challenge the parrot? The Party Parrot Quiz is an online quiz web ap
 - React with Redux frontend
 - HTML/SCSS
 - Node/Javascript
+- Socket.io
 - Jest
 - Docker
 - MongoDB
