@@ -12,5 +12,14 @@ Do you dare challenge the parrot? The Party Parrot Quiz is an online quiz web ap
 - From the client folder, run `npm start`
 - From the socket folder, run `npm run start`
 
+## Technologies
+- React with Redux frontend
+- HTML/SCSS
+- Node/Javascript
+- Jest
+- Docker
+- MongoDB
+
+
 ### Contributors
 Rahib Rahman, Talha Sadak, Urslan Malik, Souheil Fenghour
