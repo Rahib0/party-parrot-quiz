@@ -11,10 +11,14 @@ const io = require('socket.io')(httpServer, {
 let gamesArray = []
 
 function addPlayer(lobbyId, name, socketId) {
-    const game = gamesArray.find(game => game.lobbyId == lobbyId)
-    game.players.push({ name, socketId, ready: false, score: 0 })
-    console.log("new array: ", gamesArray)
-    console.log(game.players)
+    try{
+        const game = gamesArray.find(game => game.lobbyId == lobbyId)
+        game.players.push({ name, socketId, ready: false, score: 0 })
+        console.log("new array: ", gamesArray)
+        console.log(game.players)
+    } catch {
+        console.log("whoops something went wrong adding someone")
+    }
 }
 
 function removePlayer( lobbyId, socketId) {
@@ -22,7 +26,7 @@ function removePlayer( lobbyId, socketId) {
     const game = gamesArray.find(game => game.lobbyId == lobbyId)
     let players = game.players.filter(player => player.socketId != socketId)
     game.players = players
-    console.log(gamesArray)
+    console.log(gamesArray, "Player removed")
 
     // console.log("player info: ", player)
     // console.log("game info: ", game)
@@ -125,7 +129,17 @@ io.on('connection', socket => {
         io.in(lobbyId).emit('update-player-lobby', playerArray(lobbyId))
         // removePlayer( socket.id )
         // io.in(lobbyId).emit('update-player-lobby', playerArray(lobbyId))
-        
+        if (gamesArray) {
+            const game = gamesArray.find(game => game.lobbyId == lobbyId)
+            setTimeout(() => {
+                if (game.players.length == 0) {
+                    console.log(game.players.length)
+                    gamesArray = gamesArray.filter(gam => gam.lobbyId !== game.lobbyId)
+                    console.log(gamesArray)
+                }
+            }, 5000) 
+        }
+        console.log(gamesArray)
     })
 
 
