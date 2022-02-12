@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import JoinRoom from '../JoinRoom';
+import { Back, FormJoinGame } from '../../components';
 import userEvent from '@testing-library/user-event';
 
 describe ('Join Room', () => {
@@ -11,11 +11,11 @@ describe ('Join Room', () => {
     beforeAll(() => {
         delete window.location;
         window.location = {
-            href: 'https://trivia-quack.netlify.app/',
+            href: 'https://party-parrot.netlify.app/',
         };
     });
 
-    beforeEach(() => render(<JoinRoom />, { wrapper: MemoryRouter}));
+    beforeEach(() => render(<FormJoinGame />, { wrapper: MemoryRouter}));
     
     afterAll(() => {
         window.location = location;
