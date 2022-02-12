@@ -181,8 +181,20 @@
   text-decoration: underline;
 }
 
+@media (max-width: 475px) {
+  .game-title {
+    font-size: 150%;
+  }
+}
+
 .question {
   font-size: 300%;
+}
+
+@media (max-width: 475px) {
+  .question {
+    font-size: 150%;
+  }
 }
 
 .q-dotted {
@@ -194,6 +206,12 @@
 .answer {
   font-size: 300%;
   color: slategray;
+}
+
+@media (max-width: 475px) {
+  .answer {
+    font-size: 150%;
+  }
 }
 
 .sbmt-answr {

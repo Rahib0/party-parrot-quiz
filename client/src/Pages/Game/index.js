@@ -155,12 +155,12 @@ export default function Game() {
                 <p className='selected'>{playerSelectOption && `${playerSelectOption} has been picked`}</p>
                 <div>
                     <table>
-                        <tbody>
-                            <tr>
+                        <tbody className='answers_container'>
+                            <tr className='answer_container_small'>
                                 <td><button className='answer' onClick={handlePickAnswer} value={state.answers[0]}> {state.answers[0]}</button><img className='answer-parrot' src={p1} alt='party-parrot' /></td>
                                 <td><button className='answer' onClick={handlePickAnswer} value={state.answers[1]} > {state.answers[1]} </button><img className='answer-parrot' src={p1} alt='party-parrot' /></td>
                             </tr>
-                            <tr>
+                            <tr className='answer_container_small'>
                                 <td><button className='answer' onClick={handlePickAnswer} value={state.answers[2]} > {state.answers[2]} </button><img className='answer-parrot' src={p1} alt='party-parrot' /></td>
                                 <td><button className='answer' onClick={handlePickAnswer} value={state.answers[3]} > {state.answers[3]} </button><img className='answer-parrot' src={p1} alt='party-parrot' /></td>
                             </tr>
